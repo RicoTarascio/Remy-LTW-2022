@@ -7,9 +7,9 @@
 
 .textfield {
   width: 100%;
-  border: 1px solid var(--input-boder);
+  outline: 1px solid var(--input-boder);
   border-radius: 4px;
-  outline: none;
+  border: none;
 }
 
 .input-icon {
@@ -53,16 +53,16 @@
 }
 
 .textfield:not(:placeholder-shown):invalid {
-  border: 2px solid var(--negative);
+  outline: 2px solid var(--negative);
 }
 
 .textfield:not(:placeholder-shown):valid {
-  border: 2px solid var(--positive);
+  outline: 2px solid var(--positive);
 }
 
 .textfield:focus,
 .textfield:focus-visible {
-  border: 2px solid var(--primary-selected);
+  outline: 2px solid var(--primary-selected);
 }
 
 .hide-show-password {

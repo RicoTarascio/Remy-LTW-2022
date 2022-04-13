@@ -8,21 +8,21 @@ import "./login.css";
 
 
 const Login = () => {
-    return(
+    return (
         <>
-        <h2>Login</h2>  
-        <div className='textfield-holder'>
-            <Textfield size="big" type="email" changeCallback={(e: any) => { console.log(e) }} placeholder='Inserisci la tua email' label='Email' required icon='Profile' />
-        </div>
+            <h2>Login</h2>
+            <div className='textfield-holder'>
+                <Textfield size="big" type="email" changeCallback={(e: any) => { console.log(e) }} placeholder='Inserisci la tua email' label='Email' required icon='Profile' />
+            </div>
 
-        <div className='textfield-holder'>
-            <Textfield size="big" type="password" changeCallback={(e: any) => { console.log(e) }} placeholder='Inserisci la tua password' label='Password' required icon='Profile' />
-        </div>
+            <div className='textfield-holder'>
+                <Textfield size="big" type="password" changeCallback={(e: any) => { console.log(e) }} placeholder='Inserisci la tua password' label='Password' required icon='Show' />
+            </div>
 
-        <div>
-            <input type='checkbox' name="ricordami" ></input>
-            Ricordami
-        </div>
+            <div>
+                <input type='checkbox' name="ricordami" ></input>
+                Ricordami
+            </div>
         </>
 
     );

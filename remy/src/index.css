@@ -32,7 +32,7 @@ body {
 
 .ui-text {
   margin: 0;
-  font-size: 14px;
+  font-size: 16px;
   font-family: "Poppins semi-bold";
   color: var(--black);
   margin-bottom: 8px;
@@ -62,4 +62,12 @@ body {
 
 .Profile::before {
   content: url("./icons/Profile.svg");
+}
+
+.Show::before {
+  content: url("./icons/Show.svg");
+}
+
+.Hide::before {
+  content: url("./icons/Hide.svg");
 }

@@ -1,1 +1,1 @@
-export type Icon = "Profile";
+export type Icon = "Profile" | "Show" | "Hide";
