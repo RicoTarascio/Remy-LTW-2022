@@ -1,0 +1,15 @@
+.asterisc {
+  color: var(--negative);
+  font-size: 18px;
+}
+
+.checkbox-container {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  gap: 8px;
+  align-items: center;
+}
+
+.checkbox-label {
+  margin-bottom: 0;
+}
