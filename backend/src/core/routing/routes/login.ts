@@ -61,10 +61,8 @@ const verifyToken = (
 
 const isUserAlreadyLogged = (req: Request): boolean => {
   const [err, token] = getJWT(req);
-  console.log(err, token);
   if (token) {
     const [err, payload] = verifyToken(token);
-    console.log(err, payload);
     if (payload) {
       return true;
     }
