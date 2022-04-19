@@ -30,7 +30,7 @@ const Login = Router.get("/login", async (req: Request, res: Response) => {
       });
       console.log(token);
       res.cookie("token", token, { maxAge: jwtExpirySeconds * 1000 });
-      return res.end();
+      return res.status(200).end();
     }
     return res.status(400).send(`Password is incorrect`);
   }
