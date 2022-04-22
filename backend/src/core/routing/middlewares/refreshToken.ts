@@ -1,6 +1,5 @@
 import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
-import { UserToken } from "../../types/token";
 
 const refreshToken = (req: Request, res: Response, next: NextFunction) => {
   if (!isUserAlreadyLogged(req)) {
@@ -8,7 +7,7 @@ const refreshToken = (req: Request, res: Response, next: NextFunction) => {
   } else {
     // User already has token,
     // check if token is about to expire,
-    // if yes refresh, return token otherwise
+    // if yes refresh it, otherwise do nothing
     const [, token] = getJWT(req);
     const [, payload] = verifyToken(token!);
     if (payload && isTokenAboutToExpire(payload)) {
