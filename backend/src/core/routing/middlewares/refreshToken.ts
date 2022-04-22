@@ -1,5 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
+import createToken from "../../services/createToken";
+import verifyToken from "../../services/verifyToken";
 
 const refreshToken = (req: Request, res: Response, next: NextFunction) => {
   if (!isUserAlreadyLogged(req)) {
@@ -15,13 +17,9 @@ const refreshToken = (req: Request, res: Response, next: NextFunction) => {
         name: payload.name,
         email: payload.email,
       };
+      const token = createToken(tokenUser);
 
-      const JWT_SECRET = process.env.JWT_SECRET!;
       const jwtExpirySeconds = process.env.JWT_EXPIRY_SECONDS!;
-      const token = jwt.sign(tokenUser, JWT_SECRET, {
-        algorithm: "HS256",
-        expiresIn: +jwtExpirySeconds,
-      });
       res.cookie("token", token!, { maxAge: +jwtExpirySeconds * 1000 });
       res.status(200).end();
     } else {
@@ -37,19 +35,6 @@ const getJWT = (
   const token: string = req.headers.cookie.replace("token=", "");
   if (!token) return [new Error("Token not present"), undefined];
   return [undefined, token];
-};
-
-const verifyToken = (
-  token: Object
-): [error: Error | undefined, payload: jwt.JwtPayload | undefined] => {
-  const stringToken = token.toString();
-  const JWT_SECRET = process.env.JWT_SECRET!;
-  try {
-    const payload = jwt.verify(stringToken, JWT_SECRET) as jwt.JwtPayload;
-    return [undefined, payload];
-  } catch (error: any) {
-    return [error, undefined];
-  }
 };
 
 const isUserAlreadyLogged = (req: Request): boolean => {
