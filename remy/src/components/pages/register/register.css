@@ -1,0 +1,9 @@
+.register-container{
+    display:grid;
+    grid-template: auto 1fr auto / auto auto;
+    height: 100%;
+}
+
+.register-title {
+    margin-bottom: 64px;
+  }

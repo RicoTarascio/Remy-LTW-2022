@@ -78,3 +78,7 @@ body {
 .Hide::before {
   content: url("./icons/Hide.svg");
 }
+
+.EditSquare::before{
+  content: url("./icons/Edit Square.svg");
+}
