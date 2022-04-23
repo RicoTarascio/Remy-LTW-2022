@@ -1,0 +1,9 @@
+.home-container{
+    display: grid;
+    grid-template: auto auto;
+    height: 100%;
+}
+
+.slogan-container-2{
+    color: var(--secondary);
+}
