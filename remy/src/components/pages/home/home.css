@@ -1,9 +1,17 @@
 .home-container{
     display: grid;
-    grid-template: auto auto;
+    grid-template: auto auto/auto auto;
     height: 100%;
+}
+
+.text-container{
+    padding-left: 100px;
 }
 
 .slogan-container-2{
     color: var(--secondary);
+}
+
+.button-container{
+    padding: 50px;
 }

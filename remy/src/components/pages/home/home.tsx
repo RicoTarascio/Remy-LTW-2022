@@ -1,3 +1,5 @@
+import "./home.css";
+
 const Home = () => {
     return (
         <div className="home-container">
@@ -18,7 +20,14 @@ const Home = () => {
                 <div className="subtitle-container">
                     <h3>Remy è il dietologo di fiducia dei tuoi animali domestici</h3>
                 </div>
+                <div className="button-container">
+                    <button>Start now</button>
+                    <span></span>
+                    <h6>It's free!</h6>
+                </div>
             </div>
+
+            
             
         </div>
     );
