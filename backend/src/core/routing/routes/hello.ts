@@ -1,8 +1,8 @@
-import express from "express";
+import express, { Request, Response } from "express";
 
 const Router = express.Router();
 
-const Hello = Router.get("/hello", async (req, res) => {
+const Hello = Router.get("/hello", async (req: Request, res: Response) => {
   res.status(200).send("Hello!");
 });
 

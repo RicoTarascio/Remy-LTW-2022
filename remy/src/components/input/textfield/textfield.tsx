@@ -14,7 +14,7 @@ const Textfield = (
             </h6>
             <div className="input-icon">
                 <input className={`textfield ${size}`} type={typeController} placeholder={placeholder} required={required} onChange={(e) => { changeCallback(e) }} />
-                {type === "password" ? <div className="hide-show-password" onClick={() => setTypeController(hideShowPassword(typeController))}><i className={`icon ${typeController == "password" ? "Show" : "Hide"}`}></i></div> : <i className={`icon ${icon}`}></i>}
+                {type === "password" ? <div className="hide-show-password" onClick={() => setTypeController(hideShowPassword(typeController))}><i className={`icon ${typeController === "password" ? "Show" : "Hide"}`}></i></div> : <i className={`icon ${icon}`}></i>}
 
             </div>
         </div>

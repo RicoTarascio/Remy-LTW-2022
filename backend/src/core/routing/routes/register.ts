@@ -1,4 +1,4 @@
-import express, { Response } from "express";
+import express, { Request, Response } from "express";
 import FormValidator from "../../../utils/formValidator";
 import findDBUser from "../../db/queries/findUser";
 import { RegisterBody } from "../../types/registerBody";
@@ -10,17 +10,25 @@ const Router = express.Router();
 
 const Register = Router.get(
   "/register",
-  async (req: RequestTyped<RegisterBody>, res: Response) => {
-    if (!req.body || !req.body.plainPwd || !req.body.email) {
-      return res.status(400).send(`Need email and password to register.`);
+  async (req: Request, res: Response) => {
+    if (
+      !req.query ||
+      !req.query.plainPwd ||
+      !req.query.email ||
+      !req.query.name ||
+      !req.query.surname
+    ) {
+      return res
+        .status(400)
+        .send(`Need name, surname, email and password to register.`);
     }
 
-    const email = req.body.email;
+    const email = req.query.email as string;
     const dbUser = findDBUser(email);
 
     if (dbUser) return res.status(400).send("Email already in use");
 
-    const plainPassword = req.body.plainPwd;
+    const plainPassword = req.query.plainPwd as string;
     const validationErrors = validateSubmission(email, plainPassword);
     if (validationErrors) return res.status(400).send(validationErrors);
 
@@ -38,11 +46,10 @@ const Register = Router.get(
             // ....
 
             // Create token
-            console.log({
-              ...req.body,
-            });
             const token = createToken({
-              ...req.body,
+              name: req.query.name as string,
+              surname: req.query.surname as string,
+              email: email,
             });
             const jwtExpirySeconds = process.env.JWT_EXPIRY_SECONDS!;
             res.cookie("token", token, { maxAge: +jwtExpirySeconds * 1000 });

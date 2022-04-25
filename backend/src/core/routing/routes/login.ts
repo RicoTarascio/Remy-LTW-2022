@@ -3,28 +3,27 @@ import bcrypt from "bcrypt";
 import refreshToken from "../middlewares/refreshToken";
 import findDBUser from "../../db/queries/findUser";
 import createToken from "../../services/createToken";
-import { RequestTyped } from "../../types/requestTyped";
-import { LoginBody } from "../../types/loginBody";
 
 const Router = express.Router();
 
 const Login = Router.get(
   "/login",
   refreshToken,
-  async (req: RequestTyped<LoginBody>, res: Response) => {
-    if (!req.body || !req.body.plainPwd || !req.body.email) {
+  async (req: Request, res: Response) => {
+    if (!req.query || !req.query.plainPwd || !req.query.email) {
       return res.status(400).send(`Need email and password to login.`);
     }
 
-    const email = req.body.email;
+    const email = req.query.email as string;
     const dbUser = findDBUser(email);
 
     if (dbUser) {
-      const plainPwd = req.body.plainPwd;
+      const plainPwd = req.query.plainPwd as string;
       const pwdMatch = await comparePassword(plainPwd, dbUser.hash);
       if (pwdMatch) {
         const tokenUser = {
           name: dbUser.name,
+          surname: dbUser.name,
           email: dbUser.email,
         };
         const token = createToken(tokenUser);

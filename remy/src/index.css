@@ -45,6 +45,16 @@ body {
   height: 100%;
 }
 
+h1,
+h2,
+h3 {
+  line-height: 1.1;
+}
+
+p {
+  max-width: 60ch;
+}
+
 :root {
   --primary: #4063de;
   --primary-hover: #375fc6;
@@ -79,6 +89,6 @@ body {
   content: url("./icons/Hide.svg");
 }
 
-.EditSquare::before{
-  content: url("./icons/Edit Square.svg");
+.EditSquare::before {
+  content: url("./icons/Edit\ Square.svg");
 }
