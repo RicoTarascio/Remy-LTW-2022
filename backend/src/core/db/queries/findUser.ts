@@ -1,9 +1,14 @@
+import { User } from "@prisma/client";
 import Users from "../../../mock/mockUsers";
+import prismaClient from "../prismaClient";
 
-const findDBUser = (email: string) => {
-  const userFound = Users.filter((user) => user.email === email);
-  if (userFound.length > 0) return userFound[0];
-  return undefined;
+const findDBUser = async (email: string): Promise<User | null> => {
+  const user = await prismaClient.user.findUnique({
+    where: {
+      email: email,
+    },
+  });
+  return user;
 };
 
 export default findDBUser;

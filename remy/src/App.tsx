@@ -3,6 +3,8 @@ import Login from './components/pages/login/login';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './components/pages/home/home';
 import Register from './components/pages/register/register';
+import RequireNotAuth from './controllers/requireNotAuth';
+
 
 const App = () => {
 
@@ -11,8 +13,8 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='login' element={<Login />} />
-          <Route path='register' element={<Register />} /> 
+          <Route path='login' element={<RequireNotAuth><Login /></RequireNotAuth>} />
+          <Route path='register' element={<RequireNotAuth><Register /></RequireNotAuth>} />
         </Routes>
       </BrowserRouter>
     </>

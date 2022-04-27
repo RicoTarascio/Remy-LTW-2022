@@ -1,10 +1,10 @@
 import express, { Request, Response } from "express";
 import FormValidator from "../../../utils/formValidator";
 import findDBUser from "../../db/queries/findUser";
-import { RegisterBody } from "../../types/registerBody";
-import { RequestTyped } from "../../types/requestTyped";
 import bcrypt from "bcrypt";
 import createToken from "../../services/createToken";
+import { User } from "@prisma/client";
+import queryAddUser from "../../db/queries/addUser";
 
 const Router = express.Router();
 
@@ -24,7 +24,7 @@ const Register = Router.get(
     }
 
     const email = req.query.email as string;
-    const dbUser = findDBUser(email);
+    const dbUser = await findDBUser(email);
 
     if (dbUser) return res.status(400).send("Email already in use");
 
@@ -43,7 +43,12 @@ const Register = Router.get(
               .send("Errore inaspettato, per favore riprova.");
           if (hash) {
             // Add user to db
-            // ....
+            queryAddUser({
+              name: req.query.name as string,
+              surname: req.query.surname as string,
+              email: email,
+              hash: hash,
+            } as User);
 
             // Create token
             const token = createToken({
@@ -52,8 +57,11 @@ const Register = Router.get(
               email: email,
             });
             const jwtExpirySeconds = process.env.JWT_EXPIRY_SECONDS!;
-            res.cookie("token", token, { maxAge: +jwtExpirySeconds * 1000 });
-            return res.status(200).end();
+            return res
+              .cookie("token", token, { maxAge: +jwtExpirySeconds * 1000 })
+              .setHeader("token", token)
+              .status(200)
+              .end();
           }
         });
       }

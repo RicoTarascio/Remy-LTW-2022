@@ -3,11 +3,20 @@ import express from "express";
 import dotenv from "dotenv";
 import Router from "./core/routing/router";
 import bodyParser from "body-parser";
+import cookieParser from "cookie-parser";
 
 dotenv.config();
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    allowedHeaders: ["token", "Cookies"],
+    exposedHeaders: ["token", "Cookies"],
+    credentials: true,
+    origin: "http://localhost:3000",
+  })
+);
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(Router);
 

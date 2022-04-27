@@ -15,7 +15,7 @@ const Login = Router.get(
     }
 
     const email = req.query.email as string;
-    const dbUser = findDBUser(email);
+    const dbUser = await findDBUser(email);
 
     if (dbUser) {
       const plainPwd = req.query.plainPwd as string;
@@ -23,14 +23,20 @@ const Login = Router.get(
       if (pwdMatch) {
         const tokenUser = {
           name: dbUser.name,
-          surname: dbUser.name,
+          surname: dbUser.surname,
           email: dbUser.email,
         };
         const token = createToken(tokenUser);
 
         const jwtExpirySeconds = process.env.JWT_EXPIRY_SECONDS!;
-        res.cookie("token", token, { maxAge: +jwtExpirySeconds * 1000 });
-        return res.status(200).end();
+        return res
+          .cookie("token", token, {
+            maxAge: +jwtExpirySeconds * 1000,
+            secure: false,
+          })
+          .setHeader("token", token)
+          .status(200)
+          .end();
       }
       return res.status(400).send(`Password is incorrect`);
     }

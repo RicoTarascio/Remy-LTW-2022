@@ -1,6 +1,8 @@
+import useUser from "../../../hooks/useUser";
 import "./home.css";
 
 const Home = () => {
+    const [user, loading, err] = useUser();
     return (
         <div className="home-container">
             <div className="top">
@@ -8,7 +10,11 @@ const Home = () => {
                     <h1>Home</h1>
                 </div>
             </div>
-
+            {
+                loading ? <p>Caricando le informazioni sull'utente...</p> :
+                    user ? <div><h3>Bentornato {user.name}!</h3></div> :
+                        ""
+            }
             <div className="text-container">
                 <div className="slogan-container">
                     <h1 className="main">Make your pets <span><h1 className="main orange">eat the right way</h1></span></h1>
