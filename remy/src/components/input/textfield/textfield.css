@@ -51,7 +51,7 @@
   padding: 4px 16px;
 }
 
-.textfield:not(:placeholder-shown):invalid {
+.textfield:invalid {
   outline: 2px solid var(--negative);
 }
 
