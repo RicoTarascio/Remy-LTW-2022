@@ -16,21 +16,57 @@
   height: 100px;
 }
 
-.form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 80px;
-}
-
 .inner-form-container {
-  width: min(100%, 430px);
+  min-width: min(100%, 430px);
   display: grid;
   grid-template-rows: max-content max-content max-content max-content;
   gap: 16px;
 }
 
 .login-title {
-  margin-bottom: 64px;
+  margin-bottom: 32px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: inherit;
+}
+
+.error-message-container {
+  display: block;
+}
+.error-message {
+  text-align: start;
+  font-family: "Poppins semi-bold";
+  color: var(--negative);
+  font-size: 14px;
+  min-height: 14px;
+  margin: 0;
+}
+
+.button-spinner {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  gap: 16px;
+  place-items: center;
+  margin-top: 48px;
+}
+
+.registrati {
+  font-family: "Poppins regular";
+  font-size: 16px;
+  margin-top: 16px;
+}
+
+.link {
+  font-family: "Poppins semi-bold";
+  color: var(--primary);
+  cursor: pointer;
+}
+
+.link:hover {
+  color: var(--primary-hover);
 }

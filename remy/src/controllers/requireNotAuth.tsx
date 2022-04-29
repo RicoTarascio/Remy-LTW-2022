@@ -1,41 +1,37 @@
-import { useEffect, useState } from "react";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { ComponentType, FunctionComponent, ReactComponentElement, useEffect, useState } from "react";
+import { Navigate, NavigateFunction, useLocation, Location, useNavigate } from "react-router-dom";
+import Spinner from "../components/commons/spinner/spinner";
 import useUser from "../hooks/useUser";
 
-type LocationProps = {
+export type LocationProps = {
     state: {
         from: Location;
     };
 };
 
-const RequireNotAuth = ({ children }: { children: JSX.Element }) => {
-    const [user, loading, error] = useUser();
-    const location = useLocation() as unknown as LocationProps;
-    const navigate = useNavigate();
-    const [content, setContent] = useState(children);
+export type NavigationRouter = {
+    location: LocationProps, navigate: NavigateFunction
+}
 
-    const errorContent = () => {
-        return <>
-            <h1>Error</h1>
-            <h3>{error}</h3>
-        </>
+type ComponentWithRouter = {
+    router: NavigationRouter
+}
+
+const requireNotAuth = (Component: any) => {
+    const ElemToRender = () => {
+        const [user, loading, error] = useUser();
+        const location = useLocation() as unknown as LocationProps;
+        const navigate = useNavigate();
+
+        useEffect(() => {
+        }, [error, loading, user]);
+
+        return (loading ? <Spinner /> : user ? <Navigate to={"/"} replace /> : <Component {...{
+            location: location, navigate: navigate
+        }} ></Component>);
     }
-    const loadingContent = () => {
-        return <>
-            <h3>Loading...</h3>
-        </>
-    }
 
-    useEffect(() => {
-        if (loading) setContent(loadingContent);
-        else if (!user) setContent(children);
-        else {
-            const from = location.state?.from?.pathname || '/';
-            navigate(from, { replace: true });
-        }
-    }, [error, loading, user]);
-
-    return (content);
+    return ElemToRender
 };
 
-export default RequireNotAuth;
+export default requireNotAuth;

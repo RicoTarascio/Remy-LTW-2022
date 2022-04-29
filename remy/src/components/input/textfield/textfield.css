@@ -55,6 +55,10 @@
   outline: 2px solid var(--negative);
 }
 
+.invalid {
+  outline: 2px solid var(--negative);
+}
+
 .textfield:not(:placeholder-shown):valid {
   outline: 2px solid var(--positive);
 }

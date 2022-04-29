@@ -1,9 +1,31 @@
-.register-container{
-    display:grid;
-    grid-template: auto 1fr auto / auto auto;
-    height: 100%;
+.register-container {
+  display: grid;
+  grid-template: auto 1fr auto / auto auto;
+  height: 100%;
 }
 
 .register-title {
-    margin-bottom: 64px;
-  }
+  margin-bottom: 32px;
+}
+
+.error-message-container {
+  display: block;
+}
+.error-message {
+  text-align: start;
+  font-family: "Poppins semi-bold";
+  color: var(--negative);
+  font-size: 14px;
+  min-height: 14px;
+  margin: 0;
+  max-width: 40ch;
+  overflow-wrap: break-word;
+}
+
+.button-spinner {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  gap: 16px;
+  place-items: center;
+  margin-top: 48px;
+}

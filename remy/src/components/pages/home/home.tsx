@@ -1,8 +1,10 @@
+import { useNavigate } from "react-router";
 import useUser from "../../../hooks/useUser";
 import "./home.css";
 
 const Home = () => {
     const [user, loading, err] = useUser();
+    const navigate = useNavigate();
     return (
         <div className="home-container">
             <div className="top">
@@ -23,7 +25,7 @@ const Home = () => {
                     <h3>Remy è il dietologo di fiducia dei tuoi animali domestici</h3>
                 </div>
                 <div className="button-container">
-                    <button>Start now</button>
+                    <button onClick={() => { navigate("login") }}>Start now</button>
                     <h6 className="free-label">It's free!</h6>
                 </div>
             </div>
