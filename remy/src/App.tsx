@@ -17,6 +17,7 @@ const App = () => {
           <Route path='login' element={<LoginGuard />} />
           <Route path='register' element={<RegisterGuard />} />
           <Route path='/' element={<Home />} />
+          <Route path='pets' />
         </Routes>
       </BrowserRouter>
     </>
