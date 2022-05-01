@@ -13,6 +13,7 @@ interface TextFieldParams {
     valid?: boolean
     size: string
 }
+
 const Textfield = (params: TextFieldParams) => {
     const [typeController, setTypeController] = useState(params.type);
     const [validClassname, setValidClassname] = useState("")
