@@ -5,6 +5,7 @@ import Home from './components/pages/home/home';
 import Register from './components/pages/register/register';
 import RequireNotAuth from './controllers/requireNotAuth';
 import requireNotAuth from './controllers/requireNotAuth';
+import Pets from './components/pages/pets/pets';
 
 
 const App = () => {
@@ -17,7 +18,7 @@ const App = () => {
           <Route path='login' element={<LoginGuard />} />
           <Route path='register' element={<RegisterGuard />} />
           <Route path='/' element={<Home />} />
-          <Route path='pets' />
+          <Route path='pets' element={<Pets />} />
         </Routes>
       </BrowserRouter>
     </>
