@@ -1,0 +1,53 @@
+.card-container{
+    width: 270px;
+    height: 358px;
+    background: var(--secondary);
+    border: 6px solid var(--black);
+    box-sizing: border-box;
+    border-radius: 4px;
+    text-align: -webkit-center;
+}
+
+.htext{
+    margin: 0px;
+}
+
+.pet-name{
+    font-size: 20px;
+    color: #4063DE;
+    text-shadow: 2px 1px 0px var(--black);
+    margin-top: 32px;
+}
+
+.pet-type{
+    margin-top: 10px;
+}
+
+.pet-breed{
+    margin-top: 8px;
+}
+
+.pet-nutrition{
+    background: #FFFFFF;
+    width: 190px;
+    height: 144px;
+    margin-top: 16px;
+}
+
+.n-row1{
+    margin: 0px;
+    color: #3D3D3D;
+    padding-top: 16px;
+}
+
+.n-row2{
+    margin: 0px;
+    color: var(--positive);
+    padding-top: 4px;
+}
+
+.n-row3{
+    margin: 0px;
+    padding-top: 16px;
+}
+

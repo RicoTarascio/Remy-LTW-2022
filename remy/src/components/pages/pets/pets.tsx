@@ -1,3 +1,4 @@
+import Card from "../../input/card/card";
 import "./pets.css";
 
 const Pets = () => {
@@ -8,7 +9,7 @@ const Pets = () => {
             type: "Dog",
             nutrition: {
                 nextMeal: "Royal Canin Max Adult - 100g",
-                when: "3h"
+                when: "3 hours"
             }
         },
         {
@@ -17,18 +18,28 @@ const Pets = () => {
             type: "Dog",
             nutrition: {
                 nextMeal: "Royal Canin Max Junior - 100g",
-                when: "1h"
+                when: "1 hour"
             }
         }];
 
     return (
         <>
-            <h1>Pets</h1>
-            {
-                pets.map((pet) => {
-                    return <h1 key={pet.name}>{pet.name}</h1>
-                })
-            }
+            <div className="page-container">
+                <div className="page-title">
+                    <h1>Pets</h1>
+                </div>
+                <div className="cards-container">
+                    {
+                        pets.map((pet) => {
+                            return <Card type={pet.type} breed={pet.breed} name={pet.name} nutrition={pet.nutrition}></Card>
+                        })
+                    }
+                </div>
+            </div>
+            
+            
+            
+            
         </>
     );
 }
