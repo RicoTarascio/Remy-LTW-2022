@@ -1,5 +1,6 @@
 import {Nutrition} from "./nutrition";
 import "./card.css";
+import Button from "../button/button";
 
 
 type pet={
@@ -29,7 +30,7 @@ const Card=(params: pet) =>{
                 <h5 className="n-row3">{params.nutrition.nextMeal}</h5> 
             </div>
             <div className="arrow-icon">
-                
+                <Button buttonType="Secondary" text="See more" onClickCallback={()=>{}} icon="ArrowRightSquare"/>
             </div>
         </div>
     );
