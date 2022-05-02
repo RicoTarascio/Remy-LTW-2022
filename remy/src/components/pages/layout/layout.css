@@ -1,0 +1,65 @@
+.layout {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  width: 100%;
+  height: 100%;
+}
+
+.sidebar {
+  background-color: white;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  place-items: center;
+  padding: 48px;
+  min-width: max-content;
+}
+
+.links-container {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  row-gap: 32px;
+  width: clamp(max-content, 100%, 100%);
+}
+
+.link {
+  padding: 8px 80px 8px 16px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  font-family: "Poppins bold";
+  color: #323338;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: #000000;
+  background-color: #ebebeb;
+}
+
+.link.active {
+  background-color: #ddefed;
+  color: #000000;
+}
+
+.link.active:hover {
+  background-color: #ddefed;
+  color: #000000;
+}
+
+.link-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.link-icon::before {
+  background-color: #676879;
+}
+
+.link:hover .link-icon::before {
+  background-color: #000000;
+}
+
+.link.active .link-icon::before {
+  background-color: var(--positive);
+}

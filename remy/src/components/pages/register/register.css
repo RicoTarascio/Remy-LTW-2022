@@ -29,3 +29,9 @@
   place-items: center;
   margin-top: 48px;
 }
+
+.go-to-login-link {
+  font-family: "Poppins semi-bold";
+  color: var(--primary);
+  cursor: pointer;
+}

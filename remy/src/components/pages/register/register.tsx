@@ -62,11 +62,11 @@ const Register = (router: NavigationRouter) => {
                         <h3 className="error-message">{errorMessage}</h3>
                     </div>
 
-                    <Textfield valid={!errorMessage} size="big" type="text" changeCallback={(e: any) => { setName(e.target.value); }} placeholder='Mario' label='Nome' required icon='Edit Square' />
+                    <Textfield valid={!errorMessage} size="big" type="text" changeCallback={(e: any) => { setName(e.target.value); }} placeholder='Mario' label='Nome' required icon='Edit' />
 
-                    <Textfield valid={!errorMessage} size="big" type="text" changeCallback={(e: any) => { setSurname(e.target.value); }} placeholder='Rossi' label='Cognome' required icon='Edit Square' />
+                    <Textfield valid={!errorMessage} size="big" type="text" changeCallback={(e: any) => { setSurname(e.target.value); }} placeholder='Rossi' label='Cognome' required icon='Edit' />
 
-                    <Textfield valid={!errorMessage} size="big" type="email" changeCallback={(e: any) => { setEmail(e.target.value); }} placeholder='esempio@email.com' label='Email' required icon='Profile' />
+                    <Textfield valid={!errorMessage} size="big" type="email" changeCallback={(e: any) => { setEmail(e.target.value); }} placeholder='esempio@email.com' label='Email' required icon='At' />
 
                     <Textfield valid={!errorMessage} size="big" type="password" changeCallback={(e: any) => { setPassword(e.target.value); }} placeholder='Inserisci la tua password' label='Password' required icon='Show' />
 
@@ -80,6 +80,7 @@ const Register = (router: NavigationRouter) => {
                             loading ? <Spinner /> : ""
                         }
                     </div>
+                    <h3 className="registrati">Hai già un account? <span className="go-to-login-link" onClick={() => { router.navigate("/login"); }}>Accedi</span></h3>
                 </form>
             </div>
             <div className="bottom"></div>

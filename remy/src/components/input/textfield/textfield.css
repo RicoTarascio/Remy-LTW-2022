@@ -39,6 +39,10 @@
   place-items: center;
 }
 
+.icon::before {
+  background-color: var(--input-placeholder);
+}
+
 .big {
   padding: 12px 0 12px 16px;
 }

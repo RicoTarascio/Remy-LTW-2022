@@ -61,7 +61,7 @@
   margin-top: 16px;
 }
 
-.link {
+.go-to-register-link {
   font-family: "Poppins semi-bold";
   color: var(--primary);
   cursor: pointer;

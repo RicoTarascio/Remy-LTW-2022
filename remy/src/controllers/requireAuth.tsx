@@ -1,34 +1,25 @@
 import { useEffect, useState } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import Spinner from "../components/commons/spinner/spinner";
 import useUser from "../hooks/useUser";
+import { LocationProps } from "./requireNotAuth";
 
 
-const RequireAuth = ({ children }: { children: JSX.Element }) => {
-    const [user, loading, error] = useUser();
-    const location = useLocation();
-    const navigate = useNavigate();
-    const [content, setContent] = useState(children);
+const requireAuth = (Component: any) => {
+    const ElemToRender = () => {
+        const [user, loading, error] = useUser();
+        const location = useLocation() as unknown as LocationProps;
+        const navigate = useNavigate();
 
-    const errorContent = () => {
-        return <>
-            <h1>Error</h1>
-            <h3>{error}</h3>
-        </>
-    }
-    const loadingContent = () => {
-        return <>
-            <h3>Loading...</h3>
-        </>
+        useEffect(() => {
+        }, [error, loading, user]);
+
+        return (loading ? <Spinner /> : user ? <Component {...{
+            location: location, navigate: navigate, user: user
+        }} ></Component> : <Navigate to={"/remy"} replace />);
     }
 
-    useEffect(() => {
-        if (error) setContent(errorContent);
-        else if (loading) setContent(loadingContent);
-        else if (!user) navigate("/login", { replace: true, state: { from: location } });
-        else setContent(children);
-    }, [error, loading, user]);
-
-    return (content);
+    return ElemToRender
 };
 
-export default RequireAuth;
+export default requireAuth;

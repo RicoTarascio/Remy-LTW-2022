@@ -59,7 +59,7 @@ const Login = (router: NavigationRouter) => {
                             <h3 className="error-message">{errorMessage}</h3>
                         </div>
 
-                        <Textfield size="big" type="email" changeCallback={(e: any) => { setEmail(e.target.value) }} valid={!errorMessage} placeholder='esempio@email.com' label='Email' required icon='Profile' />
+                        <Textfield size="big" type="email" changeCallback={(e: any) => { setEmail(e.target.value) }} valid={!errorMessage} placeholder='esempio@email.com' label='Email' required icon='At' />
 
                         <Textfield size="big" type="password" changeCallback={(e: any) => { setPassword(e.target.value); }} valid={!errorMessage} placeholder='Inserisci la tua password' label='Password' required icon='Show' />
 
@@ -72,7 +72,7 @@ const Login = (router: NavigationRouter) => {
                             }
                         </div>
 
-                        <h3 className="registrati">Non hai un account? <span className="link" onClick={() => { router.navigate("/register"); }}>Registrati</span></h3>
+                        <h3 className="registrati">Non hai un account? <span className="go-to-register-link" onClick={() => { router.navigate("/register"); }}>Registrati</span></h3>
                     </form>
                 </div>
                 <div className="bottom"></div>

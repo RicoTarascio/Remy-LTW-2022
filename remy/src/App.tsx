@@ -6,19 +6,24 @@ import Register from './components/pages/register/register';
 import RequireNotAuth from './controllers/requireNotAuth';
 import requireNotAuth from './controllers/requireNotAuth';
 import Pets from './components/pages/pets/pets';
+import Layout from './components/pages/layout/layout';
+import requireAuth from './controllers/requireAuth';
 
 
 const App = () => {
   const LoginGuard = requireNotAuth(Login)
   const RegisterGuard = requireNotAuth(Register)
+  const LayoutWithUser = requireAuth(Layout);
   return (
     <>
       <BrowserRouter>
         <Routes>
           <Route path='login' element={<LoginGuard />} />
           <Route path='register' element={<RegisterGuard />} />
-          <Route path='/' element={<Home />} />
-          <Route path='pets' element={<Pets />} />
+          <Route path='/remy' element={<Home />} />
+          <Route path='/' element={<LayoutWithUser />} >
+            <Route index element={<Pets />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </>
