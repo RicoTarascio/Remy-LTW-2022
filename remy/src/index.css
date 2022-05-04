@@ -137,3 +137,11 @@ a {
 .TickSquare::before {
   mask-image: url("./icons/TickSquare.svg");
 }
+
+.ArrowRight::before {
+  mask-image: url("./icons/ArrowRight.svg");
+}
+
+.ArrowLeft::before {
+  mask-image: url("./icons/ArrowLeft.svg");
+}

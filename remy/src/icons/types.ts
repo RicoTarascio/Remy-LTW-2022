@@ -8,4 +8,6 @@ export type Icon =
   | "Heart"
   | "Calendar"
   | "ArrowRightSquare"
-  | "TickSquare";
+  | "TickSquare"
+  | "ArrowLeft"
+  | "ArrowRight";

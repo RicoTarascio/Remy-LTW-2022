@@ -16,7 +16,7 @@ const Button = (params: ButtonParams) => {
             <div className="button-inner">
                 <h3 className="ui-text button-text">{params.text}</h3>
                 {
-                    params.icon ? <i className={`button-icon ${params.icon}`}></i> : <div className="empty" />
+                    params.icon ? <i className={`button-icon ${params.icon}`} /> : <div className="empty" />
                 }
 
             </div>
