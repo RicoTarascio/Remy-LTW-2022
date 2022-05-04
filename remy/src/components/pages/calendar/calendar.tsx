@@ -85,13 +85,13 @@ const Calendar = () => {
                 <div className="calendar">
                     <div className="hours">
                         <div className="current-hour" style={{ marginLeft: calcOffset(today.getHours(), today.getMinutes(), 86) + "px" }}>
-                            {today.getHours() + ":" + today.getMinutes().toPrecision(2).toString().replace(".", "")}
+                            {today.getHours() + ":" + today.getMinutes()}
                         </div>
                         {
                             hours.map((h, i) => <p className="hour" key={i}>{h}</p>)
                         }</div>
                     <div className="nutritions">
-                        <span className="current-hour-separator" style={{ marginLeft: calcOffset(today.getHours(), today.getMinutes(), 86) || "32" + "px" }} />
+                        <span className="current-hour-separator" style={{ marginLeft: calcOffset(today.getHours(), today.getMinutes(), 86) + 32 + "px" }} />
                         {
                             hours.map((h, i) => <div className="nutrition-colum" key={i}>
                                 <span className="separator" />
@@ -101,7 +101,7 @@ const Calendar = () => {
                                             return <div className="calendar-card-wrapper" key={i}>
                                                 {
                                                     pet.meals.map((meal, mealIndex) => {
-                                                        return betweenHours(h, meal.when.getHours() + ":" + meal.when.getMinutes()) ? <CalendarCard pet={pet} nutritionIndex={mealIndex} key={mealIndex} style={{ marginLeft: calcCardOffset(meal.when.getHours(), meal.when.getMinutes()) || "32" + "px" }} /> : ""
+                                                        return betweenHours(h, meal.when.getHours() + ":" + meal.when.getMinutes()) ? <CalendarCard pet={pet} nutritionIndex={mealIndex} key={mealIndex} style={{ marginLeft: calcCardOffset(meal.when.getHours(), meal.when.getMinutes()) + "px" }} /> : ""
                                                     })
                                                 }
                                             </div>
@@ -146,9 +146,9 @@ const calcOffset = (hour: number, minutes: number, contentWidth: number) => {
 }
 
 const calcCardOffset = (hour: number, minutes: number) => {
-    const minutesBase30 = (minutes * 30) / 100
-    if (minutesBase30) return minutesBase30;
-    return 122;
+    const minutesBase10 = (minutes * 100) / 60
+    const offset = -minutesBase10 + 50;
+    return ((offset * 244) / 100)
 }
 
 export default Calendar;
