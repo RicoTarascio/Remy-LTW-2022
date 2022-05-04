@@ -6,6 +6,7 @@
     box-sizing: border-box;
     border-radius: 4px;
     text-align: -webkit-center;
+    margin-right: 64px;
 }
 
 .htext{
@@ -30,8 +31,9 @@
 .pet-nutrition{
     background: #FFFFFF;
     width: 190px;
-    height: 144px;
+    height: 130px;
     margin-top: 16px;
+    margin-bottom: 16px;
 }
 
 .n-row1{

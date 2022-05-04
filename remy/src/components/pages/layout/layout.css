@@ -63,3 +63,7 @@
 .link.active .link-icon::before {
   background-color: var(--positive);
 }
+
+.page{
+  background: #E3F0F3;
+}
