@@ -1,0 +1,123 @@
+.calendar-main {
+  padding: 80px 16px 16px 16px;
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr);
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+.title {
+  font-family: "Poppins medium";
+  font-size: 32px;
+  margin: 0;
+}
+
+.date-container {
+  margin-top: 48px;
+}
+
+.when {
+  font-weight: "Poppins semi-bold";
+  font-size: 14px;
+}
+
+.date {
+  margin-top: 8px;
+  font-family: "Poppins bold";
+  font-size: 18px;
+}
+
+.calendar-container {
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: 100%;
+  padding-top: 32px;
+  overflow: hidden;
+  display: flex;
+}
+
+.calendar {
+  display: grid;
+  min-width: 100%;
+  min-height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  overflow: auto;
+  grid-template-rows: auto minmax(0, 1fr);
+  border-radius: 8px;
+  padding: 16px;
+  background-color: white;
+}
+
+.hours {
+  display: grid;
+  grid-template-columns: repeat(15, 244px);
+  place-items: center;
+  position: relative;
+}
+
+.hour {
+  font-family: "Poppins semi-bold";
+  font-size: 14px;
+}
+
+.current-hour {
+  left: 0;
+  right: 0;
+  margin-right: auto;
+  z-index: 10;
+  position: absolute;
+  font-family: "Poppins semi-bold";
+  font-size: 16px;
+  padding: 8px 16px 6px 16px;
+  background-color: var(--primary);
+  color: white;
+  box-shadow: 3px 2px 0px #000000;
+  border-radius: 8px;
+  width: fit-content;
+  border: 3px solid black;
+}
+
+.nutritions {
+  height: max-content;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(15, 244px);
+  place-items: center;
+}
+.nutrition-colum {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.separator {
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 1;
+  position: absolute;
+  height: 100%;
+  width: 3px;
+  background-image: url("../../../icons/Line.svg");
+}
+
+.current-hour-separator {
+  left: 0;
+  right: 0;
+  margin-right: auto;
+  z-index: 1;
+  position: absolute;
+  height: 100%;
+  width: 3px;
+  background-image: url("../../../icons/LineHighlight.svg");
+}
+
+.calendar-card-wrapper {
+  position: relative;
+  min-height: 188px;
+  min-width: 370px;
+  margin-top: 32px;
+  z-index: 2;
+}

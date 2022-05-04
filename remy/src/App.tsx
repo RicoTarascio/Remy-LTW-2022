@@ -8,6 +8,7 @@ import requireNotAuth from './controllers/requireNotAuth';
 import Pets from './components/pages/pets/pets';
 import Layout from './components/pages/layout/layout';
 import requireAuth from './controllers/requireAuth';
+import Calendar from './components/pages/calendar/calendar';
 
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
           <Route path='/remy' element={<Home />} />
           <Route path='/' element={<LayoutWithUser />} >
             <Route index element={<Pets />} />
+            <Route path='calendar' element={<Calendar />} />
           </Route>
         </Routes>
       </BrowserRouter>

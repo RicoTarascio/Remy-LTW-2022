@@ -26,7 +26,6 @@ const NavLink = ({ icon, children, to, ...props }: NavLinkWithIcon) => {
 }
 
 const Layout = (props: { location: Location, navigate: NavigationType, user: User }) => {
-    console.log(props)
     return (
         <div className="layout">
             <div className="sidebar">
@@ -35,7 +34,7 @@ const Layout = (props: { location: Location, navigate: NavigationType, user: Use
                 </div>
                 <div className="links-container">
                     <NavLink to="/" icon="Heart">Pets</NavLink>
-                    <NavLink to="nutrition" icon="Calendar">Nutrition plan</NavLink>
+                    <NavLink to="calendar" icon="Calendar">Calendario</NavLink>
                     <NavLink to="user" icon="Profile">{props.user.name}</NavLink>
                 </div>
             </div>

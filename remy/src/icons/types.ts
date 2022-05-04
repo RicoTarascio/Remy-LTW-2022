@@ -7,4 +7,5 @@ export type Icon =
   | "Delete"
   | "Heart"
   | "Calendar"
-  | "ArrowRightSquare";
+  | "ArrowRightSquare"
+  | "TickSquare";

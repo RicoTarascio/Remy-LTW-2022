@@ -1,0 +1,65 @@
+.calendar-card-container {
+  padding: 16px;
+  background-color: white;
+  border: 3px solid black;
+  box-shadow: 5px 4px 0px #000000;
+  border-radius: 8px;
+  position: absolute;
+}
+
+.content-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  place-items: center;
+  gap: 16px;
+}
+
+.calendar-card-text-container {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  gap: 8px;
+  width: max-content;
+}
+
+.done-container {
+  margin-top: 40px;
+}
+
+.calendar-card-pet-name {
+  font-family: "Poppins semi-bold";
+  font-size: 14px;
+  color: var(--primary);
+}
+
+.product-name {
+  font-family: "Poppins bold";
+  font-size: 16px;
+  color: var(--black);
+}
+
+.product-quantity {
+  font-family: "Poppins bold";
+  font-size: 18px;
+  color: var(--positive);
+}
+
+.done-text {
+  font-family: "Poppins semi-bold";
+  font-size: 14px;
+  color: #676879;
+}
+
+.done {
+  background-color: #efefef;
+  box-shadow: none;
+}
+
+.not-before {
+  box-shadow: none;
+}
+
+.product-image {
+  width: 100px;
+  height: 150px;
+  background-color: red;
+}

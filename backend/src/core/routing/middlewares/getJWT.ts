@@ -9,7 +9,6 @@ const getJWT = (req: Request, next: NextFunction) => {
     })
     ?.replace("token=", "")
     .trim();
-  console.log(token);
   return next(token);
 };
 
