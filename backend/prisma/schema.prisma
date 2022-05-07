@@ -16,4 +16,46 @@ model User {
   name    String
   surname    String
   hash String
+  pets Pet[]
+}
+
+model Pet {
+  userID Int
+  id Int @unique @default(autoincrement())
+  breed String
+  species String
+  age Int
+  name String
+  nutritionPlans NutritionPlan[]
+  User User @relation(fields: [userID], references: [id])
+  @@id([userID, id])
+}
+
+model NutritionPlan {
+  id Int @unique @default(autoincrement())
+  petID Int
+  meals Meal[]
+  from DateTime
+  to DateTime
+  Pet Pet @relation(fields: [petID], references: [id])
+  @@id([petID, id])
+}
+
+model Meal {
+  id Int @unique @default(autoincrement())
+  nutritionPlanID Int
+  when DateTime
+  doneAt DateTime?
+  quantity Int
+  weekDay Int @default(0)
+  productID Int
+  NutritionPlan NutritionPlan @relation(fields: [nutritionPlanID], references: [id])
+  Product Product @relation(fields: [productID], references: [id])
+  @@id([nutritionPlanID, id])
+}
+
+model Product {
+  id Int @id @default(autoincrement())  
+  name String
+  meals Meal[]
 }

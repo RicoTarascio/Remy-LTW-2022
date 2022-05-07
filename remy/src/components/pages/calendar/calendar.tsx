@@ -4,15 +4,17 @@ import "./calendar.css"
 import CalendarCard from "./calendarCard/CalendarCard";
 const hours = ["8:00", "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00"]
 const Calendar = () => {
+    const weekDays = ["Domenica", "Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato"];
     const animalsWithNutrition: Pet[] = [
         {
+            species: "Dog",
             name: "Maya",
             breed: "Dio",
             meals: [
                 {
                     productName: "Royal Canin Max Adult",
                     quantity: 100,
-                    when: new Date(2022, 5, 4, 16, 30),
+                    when: new Date(2022, 5, 6, 11),
                     productImage: "../../images/product.png"
 
                 },
@@ -31,6 +33,7 @@ const Calendar = () => {
             ]
         },
         {
+            species: "Dog",
             name: "Lucas",
             breed: "Dio",
             meals: [
@@ -49,6 +52,7 @@ const Calendar = () => {
             ]
         },
         {
+            species: "Dog",
             name: "Doug",
             breed: "Dio",
             meals: [
@@ -98,7 +102,7 @@ const Calendar = () => {
             <div className="date-container">
                 <i className="ArrowLeft" onClick={() => setPrevDate()} />
                 <div className="date-text-container">
-                    <h4 className="when">Oggi</h4>
+                    <h4 className="when">{weekDays[selectedDate.getDay()]}</h4>
                     <h3 className="date">{selectedDate.toLocaleDateString("it-EU")}</h3>
                 </div>
                 <i className="ArrowRight" onClick={() => setNextDate()} />
