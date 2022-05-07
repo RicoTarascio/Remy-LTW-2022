@@ -2,9 +2,16 @@
     margin-left: 64px;
 }
 
-.page-title{
+.title-container{
+    display: grid;
+    grid-template-columns: auto auto;
     margin-top: 140px;
     margin-bottom: 64px;
+    justify-content: space-between;
+}
+
+.newpet-button{
+    margin-right: 64px;
 }
 
 .cards-container{

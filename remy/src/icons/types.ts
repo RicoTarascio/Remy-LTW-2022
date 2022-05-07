@@ -10,4 +10,6 @@ export type Icon =
   | "ArrowRightSquare"
   | "TickSquare"
   | "ArrowLeft"
-  | "ArrowRight";
+  | "ArrowRight"
+  | "Logout"
+  | "Plus";
