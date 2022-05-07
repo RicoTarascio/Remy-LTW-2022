@@ -1,3 +1,4 @@
+import Nutrition from "../../../types/nutrition";
 import Card from "../../input/card/card";
 import "./pets.css";
 
@@ -6,20 +7,16 @@ const Pets = () => {
         {
             name: "Maya",
             breed: "German Shepard",
-            type: "Dog",
-            nutrition: {
-                nextMeal: "Royal Canin Max Adult - 100g",
-                when: "3 hours"
-            }
+            species: "Dog",
+            meals: [{productName: "Royal Canin Max Adult - 100g", when: new Date(), quantity: 200, productImage:""}]
+            
         },
         {
             name: "Lucas",
             breed: "American Bulldog",
-            type: "Dog",
-            nutrition: {
-                nextMeal: "Royal Canin Max Junior - 100g",
-                when: "1 hour"
-            }
+            species: "Dog",
+            meals: [{productName: "Royal Canin Max Junior - 100g", when: new Date(), quantity: 200, productImage:""}]
+            
         }];
 
     return (
@@ -31,7 +28,7 @@ const Pets = () => {
                 <div className="cards-container">
                     {
                         pets.map((pet) => {
-                            return <Card type={pet.type} breed={pet.breed} name={pet.name} nutrition={pet.nutrition}></Card>
+                            return <Card species={pet.species} breed={pet.breed} name={pet.name} meals={pet.meals}></Card>
                         })
                     }
                 </div>
