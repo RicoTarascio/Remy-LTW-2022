@@ -14,20 +14,23 @@ const Calendar = () => {
                 {
                     productName: "Royal Canin Max Adult",
                     quantity: 100,
-                    when: new Date(2022, 5, 6, 11),
+                    hours: 18, minutes: 30,
+                    weekDay: 6,
                     productImage: "../../images/product.png"
 
                 },
                 {
                     productName: "Royal Canin Max Adult",
                     quantity: 40,
-                    when: new Date(2022, 5, 4, 18, 30),
+                    weekDay: 0,
+                    hours: 10, minutes: 30,
                     productImage: "../../images/product.png"
                 },
                 {
                     productName: "Royal Canin Max Adult",
                     quantity: 60,
-                    when: new Date(2022, 5, 4, 13, 30),
+                    weekDay: 6,
+                    hours: 20, minutes: 30,
                     productImage: "../../images/product.png"
                 }
             ]
@@ -40,13 +43,15 @@ const Calendar = () => {
                 {
                     productName: "Royal Canin Max Adult",
                     quantity: 30,
-                    when: new Date(2022, 5, 3, 15),
+                    weekDay: 6,
+                    hours: 18, minutes: 30,
                     productImage: "../../images/product.png"
                 },
                 {
                     productName: "Royal Canin Max Adult",
                     quantity: 30,
-                    when: new Date(2022, 5, 3, 18),
+                    weekDay: 5,
+                    hours: 9, minutes: 30,
                     productImage: "../../images/product.png"
                 }
             ]
@@ -59,13 +64,16 @@ const Calendar = () => {
                 {
                     productName: "Royal Canin Max Adult",
                     quantity: 30,
-                    when: new Date(2022, 5, 3, 15),
+                    weekDay: 6,
+                    hours: 11, minutes: 30,
                     productImage: "../../images/product.png"
                 },
                 {
                     productName: "Royal Canin Max Adult",
                     quantity: 30,
-                    when: new Date(2022, 5, 3, 18),
+                    weekDay: 5,
+                    hours: 12,
+                    minutes: 0,
                     productImage: "../../images/product.png"
                 }
             ]
@@ -109,34 +117,39 @@ const Calendar = () => {
             </div>
             <div className="calendar-container">
                 <div className="calendar" ref={calendarRef}>
-                    <div className="hours">
-                        <div className="current-hour" style={{ marginLeft: calcOffset(selectedDate.getHours(), selectedDate.getMinutes(), 86) + "px" }}>
-                            {new Date().getHours() + ":" + new Date().getMinutes()}
-                        </div>
-                        {
-                            hours.map((h, i) => <p className="hour" key={i}>{h}</p>)
-                        }</div>
-                    <div className="nutritions">
-                        <span className="current-hour-separator" style={{ marginLeft: calcOffset(selectedDate.getHours(), selectedDate.getMinutes(), 86) + 38 + "px" }} />
-                        {
-                            hours.map((h, i) => <div className="nutrition-colum" key={i}>
-                                <span className="separator" />
-                                <div className="nutrition-grid" style={nutritionGridStyle}>
-                                    {
-                                        animalsWithNutrition.map((pet, i) => {
-                                            return <div className="calendar-card-wrapper" key={i}>
-                                                {
-                                                    pet.meals.map((meal, mealIndex) => {
-                                                        return betweenHours(h, meal.when.getHours() + ":" + meal.when.getMinutes()) && cardDateSelected(selectedDate, meal.when) ? <CalendarCard pet={pet} nutritionIndex={mealIndex} key={mealIndex} style={{ marginLeft: calcCardOffset(meal.when.getHours(), meal.when.getMinutes()) + "px" }} /> : ""
-                                                    })
-                                                }
-                                            </div>
-                                        })
-                                    }
-                                </div>
-                            </div>)
-                        }
+                    <div className="hours-container">
+                        <div className="hours">
+                            <div className="current-hour" style={{ marginLeft: calcOffset(selectedDate.getHours(), selectedDate.getMinutes(), 86) + "px" }}>
+                                {new Date().getHours() + ":" + new Date().getMinutes()}
+                            </div>
+                            {
+                                hours.map((h, i) => <p className="hour" key={i}>{h}</p>)
+                            }</div>
                     </div>
+                    <div className="nutritions-container">
+                        <div className="nutritions">
+                            <span className="current-hour-separator" style={{ marginLeft: calcOffset(selectedDate.getHours(), selectedDate.getMinutes(), 86) + 38 + "px" }} />
+                            {
+                                hours.map((h, i) => <div className="nutrition-colum" key={i}>
+                                    <span className="separator" />
+                                    <div className="nutrition-grid" style={nutritionGridStyle}>
+                                        {
+                                            animalsWithNutrition.map((pet, j) => {
+                                                return <div className="calendar-card-wrapper" key={j}>
+                                                    {
+                                                        pet.meals.map((meal, mealIndex) => {
+                                                            return betweenHours(i + 8, meal.hours, meal.minutes) && cardDateSelected(selectedDate, meal.weekDay) ? <CalendarCard pet={pet} nutritionIndex={mealIndex} key={mealIndex} style={{ marginLeft: calcCardOffset(meal.hours, meal.minutes) + "px" }} /> : ""
+                                                        })
+                                                    }
+                                                </div>
+                                            })
+                                        }
+                                    </div>
+                                </div>)
+                            }
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -144,22 +157,19 @@ const Calendar = () => {
     )
 }
 
-const timeStringToFloat = (time: string) => {
-    var hoursMinutes = time.split(/[.:]/);
-    var hours = parseInt(hoursMinutes[0], 10);
-    var minutes = hoursMinutes[1] ? parseInt(hoursMinutes[1], 10) : 0;
-    return hours + minutes / 60;
-}
 
-const betweenHours = (reference: string, toCheck: string) => {
-    const referenceFloat = timeStringToFloat(reference);
-    const toCheckFloat = timeStringToFloat(toCheck);
-    if (toCheckFloat >= referenceFloat - .5 && toCheckFloat < referenceFloat + .5) return true;
+
+const betweenHours = (referenceHours: number, toCheckHours: number, toCheckMinutes: number) => {
+    if (referenceHours === 18) {
+        console.log("ciao")
+    }
+    const toCheckTime = toCheckHours + (toCheckMinutes < 10 ? toCheckMinutes / 10 : toCheckMinutes / 100);
+    if (toCheckTime < referenceHours + .3 && toCheckTime >= referenceHours - .7) return true;
     return false;
 }
 
-const cardDateSelected = (selectedDate: Date, cardDate: Date) => {
-    if (selectedDate.getDate() === cardDate.getDate() && selectedDate.getMonth() + 1 === cardDate.getMonth() && selectedDate.getFullYear() === cardDate.getFullYear()) return true;
+const cardDateSelected = (selectedDate: Date, cardDay: number) => {
+    if (selectedDate.getDay() === cardDay) return true;
     return false
 }
 

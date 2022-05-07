@@ -19,7 +19,7 @@ const CalendarCard = ({ pet, nutritionIndex, style }: { pet: Pet, nutritionIndex
                     <div className="done-container">
                         {
                             mealState === "done" ? <h4 className="done-text">Fatto alle ${nutrition.doneAt!.getHours() + ":" + nutrition.doneAt!.getMinutes()}</h4> :
-                                mealState === "not-before" ? <h4 className="done-text" >Non prima delle {nutrition.when.getHours() + ":" + nutrition.when.getMinutes()}</h4> :
+                                mealState === "not-before" ? <h4 className="done-text" >Non prima delle {nutrition.hours + ":" + nutrition.minutes}</h4> :
                                     <Button buttonType="Secondary" text="Fatto" onClickCallback={() => console.log("Done")} icon="TickSquare" />
                         }
                     </div>
@@ -34,15 +34,9 @@ const CalendarCard = ({ pet, nutritionIndex, style }: { pet: Pet, nutritionIndex
 
 const currentMealState = (meal: Nutrition, today: Date) => {
     if (meal.doneAt) return "done";
-    const todayWithMonthAdj = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate(), today.getHours(), today.getMinutes(), today.getSeconds())
-    if (meal.when.getTime() > todayWithMonthAdj.getTime()) return "not-before"
+    if (meal.hours > today.getHours()) return "not-before";
+    if (meal.hours === today.getHours() && meal.minutes < today.getMinutes()) return "not-before";
     return ""
-    // if (meal.when.getDate() < )
-    // if (meal.when.getHours() > today.getHours()) return "not-before"
-    // if (meal.when.getHours() === today.getHours()) {
-    //     if (meal.when.getMinutes() > today.getMinutes()) return "not-before"
-    // }
-    // return "";
 }
 
 export default CalendarCard;

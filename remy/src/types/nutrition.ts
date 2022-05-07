@@ -2,7 +2,9 @@ interface Nutrition {
   productName: string;
   quantity: number;
   productImage: string;
-  when: Date;
+  weekDay: number;
+  hours: number;
+  minutes: number;
   doneAt?: Date;
 }
 

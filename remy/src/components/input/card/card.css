@@ -1,55 +1,88 @@
-.card-container{
-    width: 270px;
-    height: 358px;
-    background: var(--secondary);
-    border: 6px solid var(--black);
-    box-sizing: border-box;
-    border-radius: 4px;
-    text-align: -webkit-center;
-    margin-right: 64px;
+.arrow-icon {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
 }
 
-.htext{
-    margin: 0px;
+.ArrowRightSquare::before {
+  background-color: var(--black);
+  content: "";
+  display: block;
+  mask-position: center;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
 }
 
-.pet-name{
-    font-size: 20px;
-    color: #4063DE;
-    text-shadow: 2px 1px 0px var(--black);
-    margin-top: 32px;
+.ArrowRightSquare {
+  height: 32px;
+  width: 32px;
 }
 
-.pet-animal{
-    margin-top: 10px;
+.card-container {
+  width: 270px;
+  background: var(--secondary);
+  border: 6px solid var(--black);
+  box-sizing: border-box;
+  border-radius: 4px;
+  text-align: -webkit-center;
+  margin-right: 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding-bottom: 16px;
 }
 
-.pet-breed{
-    margin-top: 8px;
+.htext {
+  margin: 0px;
 }
 
-.pet-nutrition{
-    background: #FFFFFF;
-    width: 190px;
-    height: 130px;
-    margin-top: 16px;
-    margin-bottom: 16px;
+.pet-name {
+  font-size: 20px;
+  color: #4063de;
+  text-shadow: 2px 1px 0px var(--black);
+  margin-top: 32px;
 }
 
-.n-row1{
-    margin: 0px;
-    color: #3D3D3D;
-    padding-top: 16px;
+.pet-animal {
+  margin-top: 10px;
 }
 
-.n-row2{
-    margin: 0px;
-    color: var(--positive);
-    padding-top: 4px;
+.pet-breed {
+  margin-top: 8px;
 }
 
-.n-row3{
-    margin: 0px;
-    padding-top: 16px;
+.pet-nutrition {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  background-image: url("../../../images/cloud.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  min-height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.n-row1 {
+  margin: 0px;
+  color: #3d3d3d;
 }
 
+.n-row2 {
+  margin: 0px;
+  color: var(--positive);
+}
+
+.n-row3 {
+  margin: 0px;
+  max-width: 20ch;
+  margin-top: 16px;
+}

@@ -8,15 +8,20 @@ const Pets = () => {
             name: "Maya",
             breed: "German Shepard",
             species: "Dog",
-            meals: [{productName: "Royal Canin Max Adult - 100g", when: new Date(), quantity: 200, productImage:""}]
-            
+
+            meals: [{
+                productName: "Royal Canin Max Adult - 100g", hours: 18, minutes: 30, quantity: 200, productImage: "", weekDay: 6,
+            }]
+
         },
         {
             name: "Lucas",
             breed: "American Bulldog",
             species: "Dog",
-            meals: [{productName: "Royal Canin Max Junior - 100g", when: new Date(), quantity: 200, productImage:""}]
-            
+            meals: [{
+                productName: "Royal Canin Max Junior - 100g", hours: 18, minutes: 30, quantity: 200, productImage: "", weekDay: 6,
+            }]
+
         }];
 
     return (
@@ -33,10 +38,10 @@ const Pets = () => {
                     }
                 </div>
             </div>
-            
-            
-            
-            
+
+
+
+
         </>
     );
 }

@@ -2,7 +2,8 @@
   padding: 80px 16px 16px 16px;
   display: grid;
   grid-template-rows: auto auto minmax(0, 1fr);
-  max-height: 100vh;
+  height: 100vh;
+  width: 100%;
   overflow: hidden;
 }
 
@@ -43,17 +44,30 @@
 }
 
 .calendar {
+  width: 100%;
   overflow: auto;
   border-radius: 8px;
   padding: 16px;
   background-color: white;
+  display: grid;
+  grid-template-rows: auto auto;
+}
+
+.hours-container {
+  height: fit-content;
+  width: 100%;
+  position: relative;
+  background-color: white;
+  z-index: 2;
 }
 
 .hours {
+  overflow-x: auto;
   display: grid;
   grid-template-columns: repeat(15, 244px);
   place-items: center;
-  position: sticky;
+  position: relative;
+  background-color: white;
 }
 
 .hour {
@@ -76,6 +90,11 @@
   border-radius: 8px;
   width: fit-content;
   border: 3px solid black;
+}
+
+.nutritions-container {
+  overflow-y: auto;
+  overflow-x: clip;
 }
 
 .nutritions {
