@@ -1,6 +1,7 @@
 import express from "express";
 import AddPet from "./routes/addPet";
 import Auth from "./routes/auth";
+import GetPets from "./routes/getPets";
 import Hello from "./routes/hello";
 import Login from "./routes/login";
 import Register from "./routes/register";
@@ -12,5 +13,6 @@ Router.use(Login);
 Router.use(Register);
 Router.use(Auth);
 Router.use(AddPet);
+Router.use(GetPets);
 
 export default Router;

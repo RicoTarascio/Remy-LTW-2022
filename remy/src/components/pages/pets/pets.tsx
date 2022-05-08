@@ -1,30 +1,12 @@
-import Nutrition from "../../../types/nutrition";
+import { useState } from "react";
+import Nutrition from "../../../types/meal";
+import Pet from "../../../types/pet";
 import Button from "../../input/button/button";
 import Card from "../../input/card/card";
-import Pet from "../pet/pet";
 import "./pets.css";
 
 const Pets = () => {
-    const pets = [
-        {
-            name: "Maya",
-            breed: "German Shepard",
-            species: "Dog",
-
-            meals: [{
-                productName: "Royal Canin Max Adult - 100g", hours: 18, minutes: 30, quantity: 200, productImage: "", weekDay: 6,
-            }]
-
-        },
-        {
-            name: "Lucas",
-            breed: "American Bulldog",
-            species: "Dog",
-            meals: [{
-                productName: "Royal Canin Max Junior - 100g", hours: 18, minutes: 30, quantity: 200, productImage: "", weekDay: 6,
-            }]
-
-        }];
+    const [pets, setPets] = useState<Pet[]>([])
 
     return (
         <>
@@ -34,21 +16,18 @@ const Pets = () => {
                         <h1>Pets</h1>
                     </div>
                     <div className="newpet-button">
-                        <Button buttonType="Secondary" onClickCallback={()=>{}} text="Aggiungi pet" icon="Plus"></Button>
+                        <Button buttonType="Secondary" onClickCallback={() => { }} text="Aggiungi pet" icon="Plus"></Button>
                     </div>
                 </div>
-                
+
                 <div className="cards-container">
                     {
                         pets.map((pet) => {
-                            return <Card species={pet.species} breed={pet.breed} name={pet.name} meals={pet.meals}></Card>
+                            return <Card pet={pet}></Card>
                         })
                     }
                 </div>
-                
-
             </div>
-
         </>
     );
 }

@@ -1,3 +1,4 @@
+import axios, { AxiosError, AxiosResponse } from "axios";
 import { useEffect, useRef, useState } from "react";
 import Pet from "../../../types/pet";
 import "./calendar.css"
@@ -27,13 +28,24 @@ const Calendar = () => {
     }
 
     useEffect(() => {
-        // Get pets from API
+        axios.get("http://localhost:4000/getPets", {
+            params: {
+                includeNutrition: true
+            },
+            withCredentials: true
+        }).then((res) => {
+            setPetsWithNutrition(res.data as Pet[]);
+            setLoadingPets(false);
+        }).catch(err => {
+            const errAxios = err as AxiosError;
+            console.log(errAxios)
+        })
     }, [])
 
     useEffect(() => {
         const leftOffset = calcOffset(selectedDate.getHours(), selectedDate.getMinutes(), 86);
         if (calendarRef) calendarRef.current?.scrollTo({ left: leftOffset - (calendarRef.current.clientWidth / 2 - 150), behavior: "smooth" });
-    }, [selectedDate])
+    }, [selectedDate, loadingPets])
 
     return (
         <div className="calendar-main">
@@ -50,7 +62,7 @@ const Calendar = () => {
             </div>
 
             <div className="calendar-container">
-                <div className="calendar" ref={calendarRef}>
+                <div className={"calendar" + (loadingPets ? " loading" : "")} ref={calendarRef}>
                     {
                         !loadingPets ? <>
                             <div className="hours-container">
@@ -73,8 +85,9 @@ const Calendar = () => {
                                                     petsWithNutrition.map((pet, j) => {
                                                         return <div className="calendar-card-wrapper" key={j}>
                                                             {
-                                                                pet.meals.map((meal, mealIndex) => {
-                                                                    return betweenHours(i + 8, meal.hours, meal.minutes) && cardDateSelected(selectedDate, meal.weekDay) ? <CalendarCard pet={pet} nutritionIndex={mealIndex} key={mealIndex} style={{ marginLeft: calcCardOffset(meal.hours, meal.minutes) + "px" }} /> : ""
+                                                                pet.nutritionPlans[0].meals.map((meal, mealIndex) => {
+                                                                    return betweenHours(i + 8, meal.hours, meal.minutes) && cardDateSelected(selectedDate, meal.weekDay) ?
+                                                                        <CalendarCard pet={pet} nutritionIndex={mealIndex} key={mealIndex} style={{ marginLeft: calcCardOffset(i + 8, meal.hours, meal.minutes) + "px" }} selectedDate={selectedDate} /> : ""
                                                                 })
                                                             }
                                                         </div>
@@ -100,7 +113,7 @@ const Calendar = () => {
 
 const betweenHours = (referenceHours: number, toCheckHours: number, toCheckMinutes: number) => {
     const toCheckTime = toCheckHours + (toCheckMinutes < 10 ? toCheckMinutes / 10 : toCheckMinutes / 100);
-    if (toCheckTime < referenceHours + .3 && toCheckTime >= referenceHours - .7) return true;
+    if (toCheckTime <= referenceHours + .3 && toCheckTime > referenceHours - .7) return true;
     return false;
 }
 
@@ -122,9 +135,13 @@ const calcOffset = (hour: number, minutes: number, contentWidth: number) => {
     return 0;
 }
 
-const calcCardOffset = (hour: number, minutes: number) => {
+const calcCardOffset = (currentHour: number, hour: number, minutes: number) => {
     const minutesBase10 = (minutes * 100) / 60
-    const offset = -minutesBase10 + 50;
+    let offset = 0;
+    if (hour < currentHour)
+        offset = minutesBase10 - 50;
+    else
+        offset = minutesBase10 + 50;
     return ((offset * 244) / 100)
 }
 

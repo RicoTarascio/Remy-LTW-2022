@@ -25,6 +25,7 @@ model Pet {
   breed String
   species String
   age Int
+  weight Float
   name String
   nutritionPlans NutritionPlan[]
   User User @relation(fields: [userID], references: [id])
@@ -44,7 +45,8 @@ model NutritionPlan {
 model Meal {
   id Int @unique @default(autoincrement())
   nutritionPlanID Int
-  when DateTime
+  hours Int
+  minutes Int
   doneAt DateTime?
   quantity Int
   weekDay Int @default(0)

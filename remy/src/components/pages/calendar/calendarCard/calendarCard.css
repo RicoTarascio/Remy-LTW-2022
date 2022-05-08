@@ -35,6 +35,7 @@
   font-family: "Poppins bold";
   font-size: 16px;
   color: var(--black);
+  max-width: 26ch;
 }
 
 .product-quantity {

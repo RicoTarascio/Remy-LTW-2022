@@ -1,10 +1,14 @@
-import Nutrition from "./nutrition";
+import NutritionPlan from "./nutritionPlan";
 
 interface Pet {
-  species: string,
+  id: number;
+  userID: number;
+  species: string;
   name: string;
   breed: string;
-  meals: Nutrition[];
+  age: number;
+  weight: number;
+  nutritionPlans: NutritionPlan[];
 }
 
 export default Pet;
