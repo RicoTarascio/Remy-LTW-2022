@@ -25,7 +25,9 @@ const GetPets = Router.get(
         if (req.query && req.query.includeNutrition)
           pets = await queryFindPets(user.id, {
             nutritionPlans: {
-              include: { meals: { include: { Product: true } } },
+              include: {
+                meals: { include: { Product: true, completedDates: true } },
+              },
             },
           });
         else pets = await queryFindPets(user.id);

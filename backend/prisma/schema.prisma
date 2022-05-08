@@ -47,13 +47,20 @@ model Meal {
   nutritionPlanID Int
   hours Int
   minutes Int
-  doneAt DateTime?
   quantity Int
   weekDay Int @default(0)
   productID Int
+  completedDates MealCompleted[]
   NutritionPlan NutritionPlan @relation(fields: [nutritionPlanID], references: [id])
   Product Product @relation(fields: [productID], references: [id])
   @@id([nutritionPlanID, id])
+}
+
+model MealCompleted {
+  mealID Int
+  when String
+  Meal Meal @relation(fields: [mealID], references: [id])
+  @@id([mealID, when])
 }
 
 model Product {

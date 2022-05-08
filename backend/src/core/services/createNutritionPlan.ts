@@ -29,7 +29,6 @@ const createMeals = async (nutritionPlanID: number) => {
       nutritionPlanID: nutritionPlanID,
       hours: randomBetween(8, 22),
       minutes: randomBetween(0, 45),
-      doneAt: null,
       quantity: randomBetween(30, 200),
       weekDay: i,
       productID: randomBetween(0, productIDs.length),
