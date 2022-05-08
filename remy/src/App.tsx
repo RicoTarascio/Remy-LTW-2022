@@ -10,6 +10,7 @@ import Layout from './components/pages/layout/layout';
 import requireAuth from './controllers/requireAuth';
 import Calendar from './components/pages/calendar/calendar';
 import User from './components/pages/user/user';
+import Pet from './components/pages/pet/pet';
 
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
     <>
       <BrowserRouter>
         <Routes>
+          <Route path="test" element={<Pet />} />
           <Route path='login' element={<LoginGuard />} />
           <Route path='register' element={<RegisterGuard />} />
           <Route path='/remy' element={<Home />} />
