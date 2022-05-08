@@ -16,7 +16,7 @@ const Card = (params: pet) => {
             </div>
             <div className="pet-nutrition">
                 <h5 className="n-row1">Devo mangiare in</h5>
-                <h3 className="n-row2">{params.meals[0].hours}</h3>
+                <h3 className="n-row2">{params.meals[0].hours} ore</h3>
                 <h5 className="n-row3">{params.meals[0].productName}</h5>
             </div>
             <div className="arrow-icon">

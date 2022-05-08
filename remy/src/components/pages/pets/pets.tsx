@@ -1,5 +1,7 @@
 import Nutrition from "../../../types/nutrition";
+import Button from "../../input/button/button";
 import Card from "../../input/card/card";
+import Pet from "../pet/pet";
 import "./pets.css";
 
 const Pets = () => {
@@ -27,9 +29,15 @@ const Pets = () => {
     return (
         <>
             <div className="page-container">
-                <div className="page-title">
-                    <h1>Pets</h1>
+                <div className="title-container">
+                    <div className="page-title">
+                        <h1>Pets</h1>
+                    </div>
+                    <div className="newpet-button">
+                        <Button buttonType="Secondary" onClickCallback={()=>{}} text="Aggiungi pet" icon="Plus"></Button>
+                    </div>
                 </div>
+                
                 <div className="cards-container">
                     {
                         pets.map((pet) => {
@@ -37,10 +45,9 @@ const Pets = () => {
                         })
                     }
                 </div>
+                
+
             </div>
-
-
-
 
         </>
     );

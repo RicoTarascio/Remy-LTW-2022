@@ -145,3 +145,11 @@ a {
 .ArrowLeft::before {
   mask-image: url("./icons/ArrowLeft.svg");
 }
+
+.Logout::before{
+  mask-image: url("./icons/Logout.svg");
+}
+
+.Plus::before{
+  mask-image: url("./icons/Plus.svg");
+}
