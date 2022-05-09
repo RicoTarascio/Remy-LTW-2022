@@ -68,7 +68,7 @@ const Calendar = () => {
                             <div className="hours-container">
                                 <div className="hours">
                                     <div className="current-hour" style={{ marginLeft: calcOffset(selectedDate.getHours(), selectedDate.getMinutes(), 86) + "px" }}>
-                                        {new Date().getHours() + ":" + new Date().getMinutes()}
+                                        {new Date().getHours() + ":" + (new Date().getMinutes() < 10 ? "0" + new Date().getMinutes() : new Date().getMinutes())}
                                     </div>
                                     {
                                         hours.map((h, i) => <p className="hour" key={i}>{h}</p>)

@@ -1,4 +1,5 @@
 import express from "express";
+import AddMealCompleted from "./routes/addMealCompleted";
 import AddPet from "./routes/addPet";
 import Auth from "./routes/auth";
 import GetPets from "./routes/getPets";
@@ -14,5 +15,6 @@ Router.use(Register);
 Router.use(Auth);
 Router.use(AddPet);
 Router.use(GetPets);
+Router.use(AddMealCompleted);
 
 export default Router;

@@ -67,3 +67,15 @@
   height: 150px;
   background-color: red;
 }
+
+.calendar-card-button-spinner {
+  display: grid;
+  grid-template-columns: max-content 24px;
+  place-items: center;
+  gap: 16px;
+}
+
+.calendar-card-button-spinner .spinner {
+  width: 24px;
+  height: 24px;
+}

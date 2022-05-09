@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Nutrition from "../../../../types/meal";
 import Pet from "../../../../types/pet";
+import Spinner from "../../../commons/spinner/spinner";
 import Button from "../../../input/button/button";
 import "./calendarCard.css";
 
@@ -13,16 +14,19 @@ const CalendarCard = ({ pet, nutritionIndex, style, selectedDate }: { pet: Pet, 
     const today = new Date();
     const [mealCompletedDate, setMealCompletedDate] = useState<Date | undefined>(undefined)
     const [mealCompletedState, setMealCompletedState] = useState("");
+    const [settingMealCompleted, mealIsBeingCompleted] = useState(false);
 
     const currentMealState = (meal: Nutrition, today: Date, selectedDate: Date) => {
+        let isMealCompleted = false;
         meal.completedDates.forEach((date) => {
             const completedDate = new Date(date.when);
             if (selectedDate.getDate() === completedDate.getDate() && selectedDate.getMonth() === completedDate.getMonth() && selectedDate.getFullYear() === completedDate.getFullYear()) {
                 setMealCompletedDate(completedDate)
                 setMealCompletedState("done");
-                return;
+                isMealCompleted = true;
             }
         })
+        if (isMealCompleted) return
         if (selectedDate.getDate() > today.getDate()) {
             setMealCompletedDate(undefined)
             setMealCompletedState("not-before");
@@ -51,12 +55,20 @@ const CalendarCard = ({ pet, nutritionIndex, style, selectedDate }: { pet: Pet, 
 
 
     const mealCompleted = () => {
-        axios.post("http://localhost:4000/mealCompleted", {
-            id: meal.id,
-            when: selectedDate.toUTCString()
-        }).then(() => {
+        mealIsBeingCompleted(true);
+        axios({
+            url: "http://localhost:4000/addMealCompleted",
+            method: "POST",
+            data: {
+                mealID: meal.id,
+                when: selectedDate.toUTCString()
+            },
+            withCredentials: true
+        }).then((res) => {
+            console.log(res)
             setMealCompletedState("done")
             setMealCompletedDate(selectedDate);
+            mealIsBeingCompleted(false);
         })
     }
 
@@ -73,9 +85,15 @@ const CalendarCard = ({ pet, nutritionIndex, style, selectedDate }: { pet: Pet, 
                     <h2 className="product-quantity">{meal.quantity}g</h2>
                     <div className="done-container">
                         {
-                            mealCompletedState === "done" ? <h4 className="done-text">Fatto alle {mealCompletedDate!.getHours() + ":" + mealCompletedDate!.getMinutes()} del {mealCompletedDate!.getDate() + "/" + mealCompletedDate!.getMonth() + 1}</h4> :
-                                mealCompletedState === "not-before" ? <h4 className="done-text" >Non prima delle {meal.hours + ":" + meal.minutes}</h4> :
-                                    <Button buttonType="Secondary" text="Fatto" onClickCallback={() => mealCompleted()} icon="TickSquare" />
+                            mealCompletedState === "done" ? <h4 className="done-text">Completato</h4> :
+                                mealCompletedState === "not-before" ? <h4 className="done-text" >Non prima delle {meal.hours + ":" + (meal.minutes < 10 ? "0" + meal.minutes : meal.minutes)}</h4> :
+                                    <div className="calendar-card-button-spinner">
+                                        <Button buttonType="Secondary" text="Fatto" onClickCallback={() => !settingMealCompleted ? mealCompleted() : null} icon="TickSquare" />
+                                        {
+                                            settingMealCompleted ? <Spinner /> : ""
+                                        }
+                                    </div>
+
                         }
                     </div>
                 </div>
