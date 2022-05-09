@@ -1,9 +1,8 @@
 import './App.css';
 import Login from './components/pages/login/login';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Outlet, Route, Routes } from 'react-router-dom';
 import Home from './components/pages/home/home';
 import Register from './components/pages/register/register';
-import RequireNotAuth from './controllers/requireNotAuth';
 import requireNotAuth from './controllers/requireNotAuth';
 import Pets from './components/pages/pets/pets';
 import Layout from './components/pages/layout/layout';
@@ -26,9 +25,13 @@ const App = () => {
           <Route path='register' element={<RegisterGuard />} />
           <Route path='/remy' element={<Home />} />
           <Route path='/' element={<LayoutWithUser />} >
-            <Route index element={<Pets />} />
+            <Route path="pets" element={<Outlet />} >
+              <Route index element={<Pets />} />
+              <Route path=':petID' element={<Pet />} />
+            </Route>
             <Route path='calendar' element={<Calendar />} />
             <Route path='user' element={<User />} />
+            <Route path='/' element={<Navigate to="pets" replace />} />
           </Route>
         </Routes>
       </BrowserRouter>

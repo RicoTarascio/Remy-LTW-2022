@@ -10,7 +10,8 @@ interface NavLinkWithIcon extends LinkProps {
 
 const NavLink = ({ icon, children, to, ...props }: NavLinkWithIcon) => {
     let resolved = useResolvedPath(to);
-    let match = useMatch({ path: resolved.pathname, end: true });
+
+    let match = useMatch({ path: resolved.pathname, end: false });
 
     return (
         <Link
@@ -33,7 +34,7 @@ const Layout = (props: { location: Location, navigate: NavigationType, user: Use
                     <h1 className="logo-inner">Remy</h1>
                 </div>
                 <div className="links-container">
-                    <NavLink to="/" icon="Heart">Pets</NavLink>
+                    <NavLink to="pets" icon="Heart">Pets</NavLink>
                     <NavLink to="calendar" icon="Calendar">Calendario</NavLink>
                     <NavLink to="user" icon="Profile">{props.user.name}</NavLink>
                 </div>

@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Outlet, useParams } from "react-router-dom";
 import Nutrition from "../../../types/meal";
 import Pet from "../../../types/pet";
 import Button from "../../input/button/button";
@@ -29,6 +30,7 @@ const Pets = () => {
                 </div>
             </div>
         </>
+
     );
 }
 
