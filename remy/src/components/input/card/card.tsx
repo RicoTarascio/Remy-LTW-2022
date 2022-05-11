@@ -16,8 +16,8 @@ const Card = ({ pet }: { pet: Pet }) => {
             </div>
             <div className="pet-nutrition">
                 <h5 className="n-row1">Devo mangiare in</h5>
-                <h3 className="n-row2">{pet.nutritionPlans[0].meals[0].hours} ore</h3>
-                <h5 className="n-row3">{pet.nutritionPlans[0].meals[0].Product.name}</h5>
+                <h3 className="n-row2">{pet.nutritionPlans?.length ? pet.nutritionPlans[0].meals[0].hours : ""} ore</h3>
+                <h5 className="n-row3">{pet.nutritionPlans?.length ? pet.nutritionPlans[0].meals[0].Product.name : ""}</h5>
             </div>
             <div className="arrow-icon">
                 <i className="ArrowRightSquare" />

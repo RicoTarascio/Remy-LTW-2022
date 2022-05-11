@@ -57,9 +57,10 @@
 }
 
 .pet-nutrition {
+  box-sizing: content-box;
   margin-top: 16px;
   margin-bottom: 16px;
-  background-image: url("../../../images/cloud.svg");
+  background-image: url("../../../images/Bubble.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;

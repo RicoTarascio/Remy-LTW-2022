@@ -8,11 +8,6 @@ const useUser = (): [
   loading: boolean,
   error: string
 ] => {
-  // 1 try to get token from local storage
-  // 2 if token is present 2.1 else 2.2
-  // 2.1 call auth api 3
-  // 2.2 user not present
-  // 3 if auth is successful return user else return error
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<User | undefined>(undefined);
   const [err, setError] = useState("");

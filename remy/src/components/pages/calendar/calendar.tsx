@@ -85,7 +85,7 @@ const Calendar = () => {
                                                     petsWithNutrition.map((pet, j) => {
                                                         return <div className="calendar-card-wrapper" key={j}>
                                                             {
-                                                                pet.nutritionPlans[0].meals.map((meal, mealIndex) => {
+                                                                pet.nutritionPlans![0].meals.map((meal, mealIndex) => {
                                                                     return betweenHours(i + 8, meal.hours, meal.minutes) && cardDateSelected(selectedDate, meal.weekDay) ?
                                                                         <CalendarCard pet={pet} nutritionIndex={mealIndex} key={mealIndex} style={{ marginLeft: calcCardOffset(i + 8, meal.hours, meal.minutes) + "px" }} selectedDate={selectedDate} /> : ""
                                                                 })

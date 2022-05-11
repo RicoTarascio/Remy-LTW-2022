@@ -8,7 +8,7 @@ interface Pet {
   breed: string;
   age: number;
   weight: number;
-  nutritionPlans: NutritionPlan[];
+  nutritionPlans?: NutritionPlan[];
 }
 
 export default Pet;

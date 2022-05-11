@@ -7,7 +7,7 @@ import Button from "../../../input/button/button";
 import "./calendarCard.css";
 
 const CalendarCard = ({ pet, nutritionIndex, style, selectedDate }: { pet: Pet, nutritionIndex: number, style: Object, selectedDate: Date }) => {
-    const meal = pet.nutritionPlans[0].meals[nutritionIndex];
+    const meal = pet.nutritionPlans![0].meals[nutritionIndex];
 
 
 
