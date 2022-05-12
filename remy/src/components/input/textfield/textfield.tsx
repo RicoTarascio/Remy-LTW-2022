@@ -31,7 +31,7 @@ const Textfield = (params: TextFieldParams) => {
                 {params.label} {params.required ? <span className="asterisc">*</span> : ""}
             </h6>
             <div className="input-icon">
-                <input className={`textfield ${params.size} ${validClassname}`} type={typeController} placeholder={params.placeholder} onChange={(e) => {
+                <input className={`textfield ${params.size} ${validClassname}`} max={20} maxLength={40} min={0} minLength={1} type={typeController} placeholder={params.placeholder} onChange={(e) => {
                     setValidClassname("");
                     params.changeCallback(e)
                 }} />

@@ -12,4 +12,6 @@ export type Icon =
   | "ArrowLeft"
   | "ArrowRight"
   | "Logout"
-  | "Plus";
+  | "Plus"
+  | "Anni"
+  | "Kg";

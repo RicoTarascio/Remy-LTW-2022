@@ -12,7 +12,7 @@
 
 .button-inner {
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: auto max-content;
   gap: 18px;
   place-items: center;
 }

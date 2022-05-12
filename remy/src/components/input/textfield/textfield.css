@@ -33,7 +33,7 @@
   height: 100%;
   width: 24px;
   top: 0;
-  right: 0;
+  right: 12px;
   text-align: center;
   display: grid;
   place-items: center;
@@ -41,6 +41,14 @@
 
 .icon::before {
   background-color: var(--input-placeholder);
+}
+
+.Anni {
+  width: 30px;
+}
+
+.Kg {
+  width: 20px;
 }
 
 .big {

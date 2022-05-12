@@ -98,6 +98,14 @@ a {
   height: 100%;
 }
 
+.Anni::before {
+  mask-image: url("./icons/Anni.svg");
+}
+
+.Kg::before {
+  mask-image: url("./icons/Kg.svg");
+}
+
 .Profile::before {
   mask-image: url("./icons/Profile.svg");
 }
@@ -146,10 +154,10 @@ a {
   mask-image: url("./icons/ArrowLeft.svg");
 }
 
-.Logout::before{
+.Logout::before {
   mask-image: url("./icons/Logout.svg");
 }
 
-.Plus::before{
+.Plus::before {
   mask-image: url("./icons/Plus.svg");
 }

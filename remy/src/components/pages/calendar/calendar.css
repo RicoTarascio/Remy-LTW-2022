@@ -125,7 +125,7 @@
 }
 
 .nutritions {
-  height: 100%;
+  height: max-content;
   position: relative;
   display: grid;
   grid-template-columns: repeat(15, 244px);

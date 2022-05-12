@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Pet from "../../../types/pet";
+import AddPetModal from "../../input/addPetModal/addPetModal";
 import Button from "../../input/button/button";
 import Card from "../../input/card/card";
 import "./pets.css";
@@ -8,6 +9,7 @@ import "./pets.css";
 const Pets = () => {
     const [pets, setPets] = useState<Pet[]>([])
     const [loading, setLoading] = useState(true);
+    const [showAddPet, setShowAddPet] = useState(false);
 
     useEffect(() => {
         axios.get("http://localhost:4000/getPets", {
@@ -22,17 +24,19 @@ const Pets = () => {
         }).catch((err) => {
             console.log(err);
         })
-    }, [])
+    }, [showAddPet])
+
 
     return (
         <>
+            <AddPetModal open={showAddPet} handleClose={() => setShowAddPet(false)} />
             <div className="page-container">
                 <div className="title-container">
                     <div className="page-title">
                         <h1>Pets</h1>
                     </div>
                     <div className="newpet-button">
-                        <Button buttonType="Secondary" onClickCallback={() => { }} text="Aggiungi pet" icon="Plus"></Button>
+                        <Button buttonType="Secondary" onClickCallback={() => { if (!showAddPet) setShowAddPet(true) }} text="Aggiungi pet" icon="Plus"></Button>
                     </div>
                 </div>
                 {

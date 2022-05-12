@@ -4,7 +4,6 @@ import dotenv from "dotenv";
 import Router from "./core/routing/router";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
-import queryFindPets from "./core/db/queries/findPets";
 
 dotenv.config();
 const app = express();

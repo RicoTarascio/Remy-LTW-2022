@@ -39,7 +39,7 @@ const Layout = (props: { location: Location, navigate: NavigationType, user: Use
                     <NavLink to="user" icon="Profile">{props.user.name}</NavLink>
                 </div>
             </div>
-            <div className="page">
+            <div className="page" id="page">
                 <Outlet />
             </div>
         </div>

@@ -1,20 +1,25 @@
-.page-container{
-    margin-left: 64px;
+.page-container {
+  margin-left: 64px;
 }
 
-.title-container{
-    display: grid;
-    grid-template-columns: auto auto;
-    margin-top: 140px;
-    margin-bottom: 64px;
-    justify-content: space-between;
+.title-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  margin-top: 140px;
+  margin-bottom: 64px;
+  justify-content: space-between;
 }
 
-.newpet-button{
-    margin-right: 64px;
+.newpet-button {
+  margin-right: 64px;
 }
 
-.cards-container{
-    display: grid;
-    grid-template-columns: max-content min-content;
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.cards-container .card-container {
+  flex: 0 1 auto;
 }
