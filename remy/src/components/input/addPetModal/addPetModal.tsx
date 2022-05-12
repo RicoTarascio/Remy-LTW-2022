@@ -1,6 +1,7 @@
 import axios, { AxiosError } from "axios";
 import { useEffect, useRef, useState } from "react";
 import isFormValid from "../../../controllers/isFormValid";
+import Spinner from "../../commons/spinner/spinner";
 import Button from "../button/button";
 import Textfield from "../textfield/textfield";
 import "./addPetModal.css";
@@ -54,7 +55,10 @@ const AddPetModal = ({ open, handleClose }: { open: boolean, handleClose: Functi
                 open ? <div className="modal-container">
                     <div className="modal">
                         {
-                            loading ? <h1>Aggiungendo {(formRef.current![0] as ObjectWithValue).value}...</h1> : <>
+                            loading ? <div className="loading-modal">
+                                <h2 className="loading-title">Aggiungendo {(formRef.current![0] as ObjectWithValue).value}...</h2>
+                                <Spinner />
+                            </div> : <>
                                 <h2 className="modal-title">Aggiungi un pet</h2>
                                 <form onSubmit={(e) => { e.preventDefault(); addPet() }} className="modal-fields" ref={formRef}>
                                     <Textfield valid={!errorMessage} placeholder="Nome del pet" required type="text" label="Nome" size="medium" changeCallback={() => { }} icon="Edit" />

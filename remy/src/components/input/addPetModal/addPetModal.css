@@ -1,3 +1,22 @@
+.loading-modal {
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 80px;
+}
+
+.loading-title {
+  font-family: "Poppins bold";
+  font-size: 24px;
+}
+
+.loading-modal .spinner {
+  height: 40px;
+  width: 40px;
+}
+
 .modal-container {
   position: absolute;
   width: 100%;
