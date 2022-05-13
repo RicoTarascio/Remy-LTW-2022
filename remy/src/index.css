@@ -33,6 +33,7 @@ body {
 * {
   font-family: "Poppins regular";
   box-sizing: border-box;
+  text-rendering: optimizeLegibility;
 }
 
 .ui-text {

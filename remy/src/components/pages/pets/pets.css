@@ -1,12 +1,10 @@
 .page-container {
-  margin-left: 64px;
-  margin-bottom: 40px;
+  padding: 80px 16px 16px 24px;
 }
 
 .title-container {
   display: grid;
   grid-template-columns: auto auto;
-  margin-top: 140px;
   margin-bottom: 64px;
   justify-content: space-between;
 }

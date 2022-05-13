@@ -3,6 +3,7 @@ import AddMealCompleted from "./routes/addMealCompleted";
 import AddPet from "./routes/addPet";
 import Auth from "./routes/auth";
 import GetPets from "./routes/getPets";
+import GetUser from "./routes/getUser";
 import Hello from "./routes/hello";
 import Login from "./routes/login";
 import Register from "./routes/register";
@@ -16,5 +17,6 @@ Router.use(Auth);
 Router.use(AddPet);
 Router.use(GetPets);
 Router.use(AddMealCompleted);
+Router.use(GetUser);
 
 export default Router;

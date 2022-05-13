@@ -1,29 +1,50 @@
-.page-container{
-    margin-left: 64px;
+.page-container {
+  padding-right: 40px;
+}
+.profile-top-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.title-container{
-    margin-top: 140px;
-    margin-bottom: 64px;
+.profile-title {
+  font-size: 32px;
+  font-family: "Poppins medium";
 }
 
-.userinfo-container{
-    margin-left: 56px;
+.profile-info-container {
+  margin-top: 40px;
+  padding: 32px 64px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  background-color: white;
+  border-radius: 8px;
+  min-width: 500px;
+  width: max-content;
 }
 
-.firstname{
-    margin-top: 92px;
+.profile-info {
+  display: grid;
+  grid-template-columns: max-content auto;
+  gap: 16px;
 }
 
-.lastname{
-    margin-top: 52px;
+.labels,
+.texts {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  gap: 24px;
 }
 
-.email{
-    margin-top: 52px;
+.profile-text {
+  font-family: "Poppins bold";
+  font-size: 18px;
 }
 
-.button-container{
-    margin-top: 240px;
-    margin-left: 60%;
+.profile-label {
+  font-family: "Poppins bold";
+  font-size: 18px;
+  color: #323338;
 }

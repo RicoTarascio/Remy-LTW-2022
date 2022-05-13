@@ -8,9 +8,9 @@ import Pets from './components/pages/pets/pets';
 import Layout from './components/pages/layout/layout';
 import requireAuth from './controllers/requireAuth';
 import Calendar from './components/pages/calendar/calendar';
-import User from './components/pages/user/user';
 import Pet from './components/pages/pet/pet';
 import AddPet from './components/pages/pets/addPet/addPet';
+import UserProfile from './components/pages/user/user';
 
 
 const App = () => {
@@ -31,7 +31,7 @@ const App = () => {
               <Route path=':petID' element={<Pet />} />
             </Route>
             <Route path='calendar' element={<Calendar />} />
-            <Route path='user' element={<User />} />
+            <Route path='user' element={<UserProfile />} />
             <Route path='/' element={<Navigate to="pets" replace />} />
           </Route>
         </Routes>

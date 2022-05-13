@@ -1,27 +1,48 @@
-import { useEffect } from "react";
-import useUser from "../../../hooks/useUser";
-import Spinner from "../../commons/spinner/spinner";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { User } from "../../../types/user";
 import Button from "../../input/button/button";
 import "./user.css";
 
-const User = () => {
-    const [user, loading, err] = useUser();
+const UserProfile = () => {
+    const [user, setUser] = useState<User>()
+    const [loadingUserInfo, setLoading] = useState(true);
 
-    useEffect(() => { }, [loading])
+
+
+    useEffect(() => {
+        axios.get("http://localhost:4000/getUser", {
+            withCredentials: true
+        }).then(res => {
+            setUser(res.data)
+            setLoading(false);
+        })
+    }, [])
     return (
         <div className="page-container">
-            <div className="title-container">
-                <h1>Il tuo profilo</h1>
-            </div>
             {
-                loading ? <Spinner /> : user ? <>
-                    <div className="userinfo-container">
-                        <div className="firstname"><h3>Nome: {user.name}</h3></div>
-                        <div className="lastname"><h3>Cognome: {user.surname}</h3></div>
-                        <div className="email"><h3>Email: {user.email}</h3></div>
+                loadingUserInfo ? <>
+                    <h1 className="profile-title">Il tuo profilo</h1>
+                    <div className="profile-loading-scheleton" />
+                </> : user ? <>
+                    <div className="profile-top-container">
+                        <h1 className="profile-title">Il tuo profilo</h1>
+                        <Button buttonType="Secondary" onClickCallback={() => { }} text="Log out" icon="Logout"></Button>
                     </div>
-                    <div className="button-container">
-                        <Button buttonType="Primary" onClickCallback={() => { }} text="Log out" icon="Logout"></Button>
+                    <div className="profile-info-container">
+                        <div className="profile-info">
+                            <div className="labels">
+                                <h3 className="profile-label">Nome:</h3>
+                                <h3 className="profile-label">Cognome:</h3>
+                                <h3 className="profile-label">Email:</h3>
+                            </div>
+                            <div className="texts">
+                                <h3 className="profile-text">{user.name}</h3>
+                                <h3 className="profile-text">{user.surname}</h3>
+                                <h3 className="profile-text">{user.email}</h3>
+                            </div>
+                        </div>
+                        <Button buttonType="Secondary" onClickCallback={() => { }} text="Modifica" icon="Edit"></Button>
                     </div>
                 </> : "Errore"
             }
@@ -31,4 +52,4 @@ const User = () => {
     );
 }
 
-export default User;
+export default UserProfile;
