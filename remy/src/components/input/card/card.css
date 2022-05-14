@@ -22,8 +22,7 @@
 }
 
 .card-container {
-  width: 270px;
-  background: var(--secondary);
+  width: 288px;
   border: 6px solid var(--black);
   box-sizing: border-box;
   border-radius: 4px;
@@ -34,25 +33,51 @@
   align-items: center;
   cursor: pointer;
   padding-bottom: 16px;
+  box-shadow: 5px 5px 0px #000000;
+}
+
+.card-header{
+  background-color: var(--primary);
+  width: 285px;
+  height: 54px;
+  border: 4px solid #000000;
+  border-radius: 3px;
+  border-top: 0px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+}
+
+.pet-name {
+  padding-top: 6px;
+  padding-left: 16px;
+  font-size: 14px;  
+  color: #FFFFFF;
+  text-shadow: 2px 1px 0px var(--black);
+}
+
+.pet-species {
+  color: #FFFFFF;
+  font-family: "Poppins normal";
+  padding-top: 8px;
+  padding-right: 16px;
+}
+
+.pet-age-weight{
+  width: 276px;
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-around
 }
 
 .htext {
   margin: 0px;
 }
 
-.pet-name {
-  font-size: 20px;
-  color: #4063de;
-  text-shadow: 2px 1px 0px var(--black);
-  margin-top: 32px;
-}
-
-.pet-animal {
-  margin-top: 10px;
-}
-
 .pet-breed {
-  margin-top: 8px;
+  padding-top: 32px;
 }
 
 .pet-nutrition {
