@@ -21,7 +21,7 @@ const App = () => {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="test" element={<AddPet />} />
+          <Route path="test" element={<Pet />} />
           <Route path='login' element={<LoginGuard />} />
           <Route path='register' element={<RegisterGuard />} />
           <Route path='/remy' element={<Home />} />

@@ -5,7 +5,7 @@ const Pet = () => {
     const petParams = useParams()
     return (
         <div className="petpage-container">
-            <div className="pet-container">
+            <div className="petheader-container">
                 <div className="back-icon">
                     <i className="ArrowLeft"></i>
                 </div>

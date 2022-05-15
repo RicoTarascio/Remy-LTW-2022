@@ -17,7 +17,7 @@
     margin-right: 8px;
   }
 
-  .pet-container{
+  .petheader-container{
     display: grid;
     grid-template-columns: min-content min-content;
     margin-left: 32px;
