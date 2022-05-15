@@ -1,5 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
+import UserController from "../../../core/controllers/userController";
 import { User } from "../../../types/user";
 import Button from "../../input/button/button";
 import "./user.css";
@@ -7,8 +9,7 @@ import "./user.css";
 const UserProfile = () => {
     const [user, setUser] = useState<User>()
     const [loadingUserInfo, setLoading] = useState(true);
-
-
+    const navigate = useNavigate();
 
     useEffect(() => {
         axios.get("http://localhost:4000/getUser", {
@@ -18,6 +19,13 @@ const UserProfile = () => {
             setLoading(false);
         })
     }, [])
+
+    const logout = () => {
+        setLoading(true);
+        axios.get("http://localhost:4000/logout", { withCredentials: true }).then((res) => {
+            UserController.authChanged();
+        })
+    }
     return (
         <div className="page-container">
             {
@@ -27,7 +35,7 @@ const UserProfile = () => {
                 </> : user ? <>
                     <div className="profile-top-container">
                         <h1 className="profile-title">Il tuo profilo</h1>
-                        <Button buttonType="Secondary" onClickCallback={() => { }} text="Log out" icon="Logout"></Button>
+                        <Button buttonType="Secondary" onClickCallback={() => { logout() }} text="Log out" icon="Logout"></Button>
                     </div>
                     <div className="profile-info-container">
                         <div className="profile-info">

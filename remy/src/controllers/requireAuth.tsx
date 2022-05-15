@@ -12,7 +12,7 @@ const requireAuth = (Component: any) => {
         const navigate = useNavigate();
 
         useEffect(() => {
-        }, [error, loading, user]);
+        }, [loading, user, error]);
 
         return (loading ? <Spinner /> : user ? <Component {...{
             location: location, navigate: navigate, user: user

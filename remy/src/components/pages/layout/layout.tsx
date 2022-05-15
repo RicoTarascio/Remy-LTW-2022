@@ -1,5 +1,4 @@
 import { Link, LinkProps, Outlet, useMatch, useResolvedPath } from "react-router-dom";
-import { NavigationRouter } from "../../../controllers/requireNotAuth";
 import { Icon } from "../../../icons/types";
 import { User } from "../../../types/user";
 import "./layout.css"

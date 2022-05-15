@@ -1,5 +1,4 @@
 import express, { Request, Response } from "express";
-import createToken from "../../services/createToken";
 import verifyToken from "../../services/verifyToken";
 import getJWT from "../middlewares/getJWT";
 
@@ -13,21 +12,15 @@ const Logout = Router.get("/logout", async (req: Request, res: Response) => {
     const [err, payload] = verifyToken(token);
 
     if (payload) {
-      const tokenUser = {
-        name: payload.name,
-        surname: payload.surname,
-        email: payload.email,
-      };
-      const token = createToken(tokenUser);
-
       const jwtExpirySeconds = 0;
       return res
-        .cookie("token", token, {
+        .cookie("token", null, {
           maxAge: +jwtExpirySeconds * 1000,
           secure: false,
         })
         .setHeader("token", token)
         .status(200)
+        .send()
         .end();
     } else res.status(400).end();
   });
