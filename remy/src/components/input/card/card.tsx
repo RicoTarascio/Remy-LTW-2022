@@ -22,9 +22,11 @@ const Card = ({ pet }: { pet: Pet }) => {
                     <h4 className="htext">{pet.weight} Kg</h4>
                 </div>
                 <div className="pet-nutrition">
-                    <h5 className="n-row1">Devo mangiare in</h5>
-                    <h3 className="n-row2">{pet.nutritionPlans?.length ? pet.nutritionPlans[0].meals[0].hours : ""} ore</h3>
-                    <h5 className="n-row3">{pet.nutritionPlans?.length ? pet.nutritionPlans[0].meals[0].Product.name : ""}</h5>
+                    <div className="nutrition-info">
+                        <h5 className="n-row1">Devo mangiare in</h5>
+                        <h3 className="n-row2">{pet.nutritionPlans?.length ? pet.nutritionPlans[0].meals[0].hours : ""} ore</h3>
+                        <h5 className="n-row3">{pet.nutritionPlans?.length ? pet.nutritionPlans[0].meals[0].Product.name : ""}</h5>
+                    </div>
                 </div>
                 <div className="arrow-icon">
                     <i className="ArrowRightSquare" />
