@@ -1,8 +1,26 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./pet.css";
+import Pet from "../../../types/pet";
 
 const Pet = () => {
     const petParams = useParams()
+    const [pet, setPet] = useState<Pet[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        axios.get("http://localhost:4000/getPet", {
+            withCredentials: true,
+            params: {
+                includeNutrition: true
+            },
+        }).then(res => {
+            setPet(res.data);
+            setLoading(false);
+        })
+    }, [])
+
     return (
         <div className="petpage-container">
             <div className="petheader-container">
