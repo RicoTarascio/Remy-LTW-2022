@@ -8,6 +8,7 @@ import Hello from "./routes/hello";
 import Login from "./routes/login";
 import Logout from "./routes/logout";
 import Register from "./routes/register";
+import UpdateUser from "./routes/updateUser";
 
 const Router = express.Router();
 
@@ -20,5 +21,6 @@ Router.use(AddPet);
 Router.use(GetPets);
 Router.use(AddMealCompleted);
 Router.use(GetUser);
+Router.use(UpdateUser);
 
 export default Router;

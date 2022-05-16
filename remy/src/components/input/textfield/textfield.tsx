@@ -10,13 +10,15 @@ interface TextFieldParams {
     label?: string,
     placeholder: string,
     icon?: Icon,
-    valid?: boolean
+    valid?: boolean,
+    defaultValue?: string,
     size: string
 }
 
 const Textfield = (params: TextFieldParams) => {
     const [typeController, setTypeController] = useState(params.type);
     const [validClassname, setValidClassname] = useState("")
+    const [value, setValue] = useState(params.defaultValue ? params.defaultValue : "")
 
     useEffect(() => {
         if (params.valid) setValidClassname("");
@@ -31,8 +33,9 @@ const Textfield = (params: TextFieldParams) => {
                 {params.label} {params.required ? <span className="asterisc">*</span> : ""}
             </h6>
             <div className="input-icon">
-                <input className={`textfield ${params.size} ${validClassname}`} max={20} maxLength={40} min={0} minLength={1} type={typeController} placeholder={params.placeholder} onChange={(e) => {
+                <input className={`textfield ${params.size} ${validClassname}`} max={20} maxLength={40} min={0} minLength={1} type={typeController} placeholder={params.placeholder} value={value} onChange={(e) => {
                     setValidClassname("");
+                    setValue(e.target.value);
                     params.changeCallback(e)
                 }} />
                 {params.type === "password" ? <div className="hide-show-password" onClick={() => setTypeController(hideShowPassword(typeController))}><i className={`icon ${typeController === "password" ? "Show" : "Hide"}`}></i></div> : <i className={`icon ${params.icon}`}></i>}

@@ -32,8 +32,7 @@ const AddPetModal = ({ open, handleClose }: { open: boolean, handleClose: Functi
                 weight: +(formRef.current![4] as ObjectWithValue).value,
             }, {
                 withCredentials: true
-            }).then((res) => {
-                console.log(res);
+            }).then(() => {
                 handleClose();
             })
         } catch (err: any) {
@@ -43,7 +42,6 @@ const AddPetModal = ({ open, handleClose }: { open: boolean, handleClose: Functi
     }
 
     useEffect(() => {
-        console.log(document.getElementById("page"))
         if (open)
             document.getElementById("page")?.classList.add("hide-scroll");
         else document.getElementById("page")?.classList.remove("hide-scroll");

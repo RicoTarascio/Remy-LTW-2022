@@ -42,7 +42,7 @@ const CalendarCard = ({ pet, nutritionIndex, style, selectedDate }: { pet: Pet, 
             setMealCompletedState("not-before");
             return;
         };
-        if (meal.hours === today.getHours() && meal.minutes < today.getMinutes()) {
+        if (meal.hours === today.getHours() && meal.minutes > today.getMinutes()) {
             setMealCompletedDate(undefined)
             setMealCompletedState("not-before");
             return;
