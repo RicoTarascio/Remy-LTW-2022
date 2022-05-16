@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import "./pet.css";
 import Pet from "../../../types/pet";
 
-const Pet = () => {
+const PetComponent = () => {
     const petParams = useParams()
     const [pet, setPet] = useState<Pet[]>([]);
     const [loading, setLoading] = useState(true);
@@ -56,4 +56,4 @@ const Pet = () => {
     );
 }
 
-export default Pet;
+export default PetComponent;
