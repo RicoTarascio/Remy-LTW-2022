@@ -125,6 +125,7 @@
 }
 
 .nutritions {
+  min-height: 100%;
   height: max-content;
   position: relative;
   display: grid;
