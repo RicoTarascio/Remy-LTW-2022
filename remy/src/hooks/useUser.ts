@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { User } from "../types/user";
-import UserController from "../core/controllers/userController";
 
 const useUser = (): [
   user: User | undefined,
   loading: boolean,
-  error: string
+  error: string,
+  fetchUser: Function
 ] => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<User | undefined>(undefined);
@@ -33,11 +33,10 @@ const useUser = (): [
   };
 
   useEffect(() => {
-    UserController.addOnAuthChangedhandler(fetchUser);
     fetchUser();
   }, []);
 
-  return [user, loading, err];
+  return [user, loading, err, fetchUser];
 };
 
 export default useUser;

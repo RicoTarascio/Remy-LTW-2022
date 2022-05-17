@@ -24,7 +24,7 @@ const requireNotAuth = (Component: any) => {
         const navigate = useNavigate();
 
         useEffect(() => {
-        }, [error, loading, user]);
+        });
 
         return (loading ? <Spinner /> : user ? <Navigate to={"/"} replace /> : <Component {...{
             location: location, navigate: navigate

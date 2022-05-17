@@ -18,11 +18,10 @@ const Pets = () => {
             },
             withCredentials: true
         }).then((res) => {
-            console.log(res.data);
             setPets(res.data);
             setLoading(false);
         }).catch((err) => {
-            console.log(err);
+            console.error(err);
         })
     }, [showAddPet])
 

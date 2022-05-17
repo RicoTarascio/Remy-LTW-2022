@@ -23,9 +23,7 @@ const UserProfile = () => {
 
     const logout = () => {
         setLoading(true);
-        axios.get("http://localhost:4000/logout", { withCredentials: true }).then((res) => {
-            UserController.authChanged();
-        })
+        axios.get("http://localhost:4000/logout", { withCredentials: true })
     }
     return (
         <>

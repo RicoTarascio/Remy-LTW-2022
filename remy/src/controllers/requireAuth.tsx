@@ -7,12 +7,13 @@ import { LocationProps } from "./requireNotAuth";
 
 const requireAuth = (Component: any) => {
     const ElemToRender = () => {
-        const [user, loading, error] = useUser();
+        const [user, loading, error, fetchUser] = useUser();
         const location = useLocation() as unknown as LocationProps;
         const navigate = useNavigate();
 
         useEffect(() => {
-        }, [loading, user, error]);
+            fetchUser();
+        });
 
         return (loading ? <Spinner /> : user ? <Component {...{
             location: location, navigate: navigate, user: user
