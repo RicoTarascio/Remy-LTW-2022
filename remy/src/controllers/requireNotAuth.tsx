@@ -19,13 +19,9 @@ type ComponentWithRouter = {
 
 const requireNotAuth = (Component: any) => {
     const ElemToRender = () => {
-        const [user, loading, error, fetchUser] = useUser();
+        const [user, loading] = useUser();
         const location = useLocation() as unknown as LocationProps;
         const navigate = useNavigate();
-
-        useEffect(() => {
-            fetchUser()
-        });
 
         return (loading ? <Spinner /> : user ? <Navigate to={"/"} replace /> : <Component {...{
             location: location, navigate: navigate

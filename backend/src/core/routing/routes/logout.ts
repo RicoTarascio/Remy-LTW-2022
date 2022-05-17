@@ -6,7 +6,6 @@ const Router = express.Router();
 
 const Logout = Router.get("/logout", async (req: Request, res: Response) => {
   return getJWT(req, (token) => {
-    console.log(token);
     if (!token) return res.status(400).send("Token not present in cookies");
 
     const [err, payload] = verifyToken(token);

@@ -2,6 +2,7 @@ import axios, { AxiosError } from "axios";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router";
 import isFormValid from "../../../controllers/isFormValid";
+import UserController from "../../../core/controllers/userController";
 import { User } from "../../../types/user";
 import Spinner from "../../commons/spinner/spinner";
 import Button from "../button/button";
@@ -35,6 +36,7 @@ const UpdateUserModal = ({ user, open, handleClose }: { user: User, open: boolea
                 withCredentials: true
             }).then(() => {
                 handleClose();
+                UserController.authChanged()
             }).catch((err) => {
                 const axiosErr = err as AxiosError
                 setErrorMessage(axiosErr.response?.data)

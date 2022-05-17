@@ -1,6 +1,6 @@
 import './App.css';
 import Login from './components/pages/login/login';
-import { BrowserRouter, Navigate, Outlet, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Outlet, Route, Routes, useNavigate } from 'react-router-dom';
 import Home from './components/pages/home/home';
 import Register from './components/pages/register/register';
 import requireNotAuth from './controllers/requireNotAuth';
