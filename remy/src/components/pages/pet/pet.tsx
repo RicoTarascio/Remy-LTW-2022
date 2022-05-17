@@ -1,10 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./pet.css";
 import Pet from "../../../types/pet";
+import Button from "../../input/button/button";
 
 const PetComponent = () => {
+    const navigate = useNavigate();
     const petParams = useParams()
     const [pet, setPet] = useState<Pet>();
     const [loading, setLoading] = useState(true);
@@ -26,31 +28,41 @@ const PetComponent = () => {
     return (
         <>
             {
-                loading ? <div>Loading...</div> : <div className="petpage-container">
+                loading ? <div>Loading...</div> : <div className="page-container">
                     <div className="petheader-container">
                         <div className="back-icon">
-                            <i className="ArrowLeft"></i>
+                            <i className="ArrowLeft" onClick={() => navigate("/pets")}></i>
                         </div>
                         <div className="name-container">
-                            <h1>Pet {pet!.name}</h1>
+                            <h1 className="title">{pet!.name}</h1>
                         </div>
                     </div>
                     <div className="info-container">
-                        <h3 className="pet-info">Specie: {pet!.species}</h3>
-
-                        <h3 className="pet-info">Razza:</h3>
-
-                        <h3 className="pet-info">Età:</h3>
-
-                        <h3 className="pet-info">Peso:</h3>
+                        <div className="pet-info">
+                            <h3>{pet!.species}</h3>
+                        </div>
+                        <div className="pet-info">
+                            <h3>{pet!.breed}</h3>
+                        </div>
+                        <div className="pet-info">
+                            <h3>{pet!.age} anni</h3>
+                        </div>
+                        <div className="pet-info">
+                            <h3>{pet!.weight} Kg</h3>
+                        </div>                        
                     </div>
                     <div className="plan-container">
                         <div className="plan-title">
-                            <h2>Piano nutrizionale</h2>
+                            <h3>Piano nutrizionale</h3>
                         </div>
                         <div className="graphs">
-                            <div className="graph1"></div>
-                            <div className="graph2"></div>
+                            <div className="graph1">
+                                <h3 className="graph-title">Nutrienti</h3>
+                                <h3></h3>
+                            </div>
+                            <div className="graph2">
+                                <h3 className="graph-title">Prossimo pasto</h3>
+                            </div>
                         </div>
 
                     </div>

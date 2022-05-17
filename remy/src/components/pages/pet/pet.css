@@ -1,10 +1,14 @@
+.page-container {
+  padding: 80px 16px 16px 64px;
+}
+
 .ArrowLeft::before{
     background-color: var(--black);
 }
 
 .ArrowLeft{
-    width: 24px;
-    height: 24px;
+    width: 26px;
+    height: 26px;
     cursor: pointer;
     border-radius: 4px;
 }
@@ -14,7 +18,7 @@
     height: 100%;
     display: grid;
     place-items: center;
-    margin-right: 8px;
+    padding-right: 8px;
   }
 
   .petheader-container{
@@ -23,36 +27,45 @@
     margin-left: 32px;
   }
 
+  .title {
+    font-family: "Poppins medium";
+    font-size: 32px;
+    margin: 0;
+  }
+
   .info-container{
-    background-color: blue;
-    height: 244px;
-    width: 1008px;
-    border-radius: 8px;
+    display: flex;
     margin-left: 64px;
-    margin-top: 32px;
+    margin-top: 64px;
+    gap: 16px;
   }
 
   .pet-info{
-    margin-left: 36px;
-    padding-top: 32px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    padding: 12px;
+    
   }
 
   .plan-container{
-    margin-top: 32px;
+    margin-top: 64px;
     margin-left: 64px;
   }
 
+  .plan-title{
+    font-family: 'Poppins normal';
+    font-size: 18px;
+  }
+
   .graphs{
-    margin-top: 8px;
-    width: 1008px;
-    display: grid;
-    grid-template-columns: auto auto;
-    justify-content: space-between;
+    margin-top: 32px;
+    gap: 16px;
+    display: flex;
   }
 
   .graph1,.graph2{
-    background-color: blue;
-    height: 244px;
-    width: 459px;
+    background-color: #FFFFFF;
     border-radius: 8px;
+    padding: 24px;
   }
+
