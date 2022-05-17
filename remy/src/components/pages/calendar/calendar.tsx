@@ -50,7 +50,7 @@ const Calendar = () => {
     return (
         <div className="calendar-main">
             <h1 className="title">
-                Calendario
+                Calendario dei pasti
             </h1>
             <div className="date-container">
                 <i className="ArrowLeft" onClick={() => setPrevDate()} />
