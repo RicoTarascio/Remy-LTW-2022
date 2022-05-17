@@ -1,10 +1,12 @@
 import "./card.css";
 import Pet from "../../../types/pet";
+import { useNavigate } from "react-router-dom";
 
 
 const Card = ({ pet }: { pet: Pet }) => {
+    const navigate = useNavigate();
     return (
-        <div className="card-container" onClick={() => { console.log(pet.name) }}>
+        <div className="card-container" onClick={() => { navigate("/pets/" + pet.id) }}>
             <div className="card-header">
                 <div className="pet-name">
                     <h2 className="htext">{pet.name}</h2>
@@ -32,7 +34,7 @@ const Card = ({ pet }: { pet: Pet }) => {
                     <i className="ArrowRightSquare" />
                 </div>
             </div>
-            
+
         </div>
     );
 

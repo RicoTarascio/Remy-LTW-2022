@@ -22,10 +22,6 @@ const UpdateUser = Router.post(
       if (payload) {
         const user = await queryFindDBUser(payload.email);
         if (user) {
-          user.email = req.body.email as string;
-          user.name = req.body.name as string;
-          user.surname = req.body.surname as string;
-
           if (user.email !== (req.body.email as string)) {
             const userWithNewEmail = await queryFindDBUser(
               req.body.email as string
@@ -37,6 +33,11 @@ const UpdateUser = Router.post(
                 .send("Un account con l'email inserita esiste già.");
             }
           }
+
+          user.email = req.body.email as string;
+          user.name = req.body.name as string;
+          user.surname = req.body.surname as string;
+
           const updatedUser = await queryUpdateUser(user);
           const newToken = createToken(updatedUser);
           const jwtExpirySeconds = process.env.JWT_EXPIRY_SECONDS!;

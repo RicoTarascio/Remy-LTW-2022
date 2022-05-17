@@ -24,20 +24,24 @@ const GetPet = Router.get(
         let pet: Pet[] = [];
 
         if (!req.query || !req.query.petID) {
-            return res.status(400).send(`Il pet non è stato trovato`);
+          return res.status(400).send(`Ho bisogno del pet id`);
         }
 
-        const petID= req.query.petID as string;
+        const petID = req.query.petID as string;
 
-        if (req.query && req.query.includeNutrition)
-          pet = await queryFindPets(user.id, {
-            nutritionPlans: {
-              include: {
-                meals: { include: { Product: true, completedDates: true } },
-              }, 
-            }, 
-          }, parseInt(petID) );
-        else pet = await queryFindPets(user.id, parseInt(petID));
+        if (req.query.includeNutrition)
+          pet = await queryFindPets(
+            user.id,
+            {
+              nutritionPlans: {
+                include: {
+                  meals: { include: { Product: true, completedDates: true } },
+                },
+              },
+            },
+            +petID
+          );
+        else pet = await queryFindPets(user.id, undefined, +petID);
         return res.status(200).send(pet);
       }
     });
