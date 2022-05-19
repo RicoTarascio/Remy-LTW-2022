@@ -89,7 +89,8 @@ a {
 
 .icon::before,
 .button-icon::before,
-.link-icon:before {
+.link-icon:before,
+.pawLoadingIcon::before {
   content: "";
   display: block;
   mask-position: center;
@@ -97,6 +98,10 @@ a {
   mask-repeat: no-repeat;
   width: 100%;
   height: 100%;
+}
+
+.Paw::before {
+  mask-image: url("./icons/Paw.svg");
 }
 
 .Anni::before {

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import UserController from "../../../core/controllers/userController";
 import { User } from "../../../types/user";
+import PawLoading from "../../commons/pawLoading/pawLoading";
 import Button from "../../input/button/button";
 import UpdateUserModal from "../../input/updateUserModal/updateUserModal";
 import "./user.css";
@@ -32,10 +33,7 @@ const UserProfile = () => {
 
             <div className="page-container">
                 {
-                    loadingUserInfo ? <>
-                        <h1 className="profile-title">Il tuo profilo</h1>
-                        <div className="profile-loading-scheleton"><div className="scheleton-hinner"></div></div>
-                    </> : user ? <>
+                    loadingUserInfo ? <PawLoading /> : user ? <>
 
                         <div className="profile-top-container">
                             <h1 className="profile-title">Il tuo profilo</h1>

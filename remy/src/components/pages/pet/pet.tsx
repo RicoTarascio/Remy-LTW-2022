@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import "./pet.css";
 import Pet from "../../../types/pet";
 import Meal, { MealCompleted } from "../../../types/meal";
+import PawLoading from "../../commons/pawLoading/pawLoading";
 
 const PetComponent = () => {
     const navigate = useNavigate();
@@ -77,7 +78,7 @@ const PetComponent = () => {
     return (
         <>
             {
-                loading ? <div>Loading...</div> : <div className="page-container">
+                loading ? <PawLoading /> : <div className="page-container">
                     <div className="petheader-container">
                         <div className="back-icon">
                             <i className="ArrowLeft" onClick={() => navigate("/pets")}></i>

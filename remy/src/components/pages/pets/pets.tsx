@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Pet from "../../../types/pet";
+import PawLoading from "../../commons/pawLoading/pawLoading";
 import AddPetModal from "../../input/addPetModal/addPetModal";
 import Button from "../../input/button/button";
 import Card from "../../input/card/card";
@@ -39,7 +40,7 @@ const Pets = () => {
                     </div>
                 </div>
                 {
-                    loading ? "Loading..." : <div className="cards-container">
+                    loading ? <PawLoading /> : <div className="cards-container">
                         {
                             pets.map((pet, i) => {
                                 return <Card pet={pet} key={i}></Card>
@@ -47,6 +48,7 @@ const Pets = () => {
                         }
                     </div>
                 }
+
             </div>
         </>
     );

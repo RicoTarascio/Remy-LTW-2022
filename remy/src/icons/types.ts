@@ -14,4 +14,5 @@ export type Icon =
   | "Logout"
   | "Plus"
   | "Anni"
-  | "Kg";
+  | "Kg"
+  | "Paw";
