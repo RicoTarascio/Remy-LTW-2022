@@ -20,6 +20,7 @@ app.use(
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(Router);
+app.use("/images", express.static(__dirname + "/images"));
 
 app.listen(process.env.SERVER_PORT, async () => {
   console.log(`Server running on port ${process.env.SERVER_PORT}`);

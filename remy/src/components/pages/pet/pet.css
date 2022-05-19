@@ -1,71 +1,257 @@
 .page-container {
-  padding: 80px 16px 16px 64px;
+  padding: 80px 16px 16px 24px;
 }
 
-.ArrowLeft::before{
-    background-color: var(--black);
+.ArrowLeft::before {
+  background-color: var(--black);
 }
 
-.ArrowLeft{
-    width: 26px;
-    height: 26px;
-    cursor: pointer;
-    border-radius: 4px;
+.ArrowLeft {
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+  border-radius: 4px;
 }
 
 .back-icon {
-    width: 100%;
-    height: 100%;
-    display: grid;
-    place-items: center;
-    padding-right: 8px;
-  }
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  padding-right: 8px;
+}
 
-  .petheader-container{
-    display: grid;
-    grid-template-columns: min-content min-content;
-    margin-left: 32px;
-  }
+.petheader-container {
+  display: grid;
+  grid-template-columns: min-content min-content;
+  gap: 16px;
+}
 
-  .title {
-    font-family: "Poppins medium";
-    font-size: 32px;
-    margin: 0;
-  }
+.title {
+  font-family: "Poppins medium";
+  font-size: 32px;
+  margin: 0;
+}
 
-  .info-container{
-    display: flex;
-    margin-left: 64px;
-    margin-top: 64px;
-    gap: 16px;
-  }
+.info-container {
+  display: flex;
+  margin-top: 64px;
+  gap: 16px;
+}
 
-  .pet-info{
-    background-color: #FFFFFF;
-    border-radius: 8px;
-    padding: 12px;
-    
-  }
+.pet-info {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 12px;
+  font-family: "Poppins bold";
+  font-size: 18px;
+}
 
-  .plan-container{
-    margin-top: 64px;
-    margin-left: 64px;
-  }
+.plan-container {
+  margin-top: 64px;
+}
 
-  .plan-title{
-    font-family: 'Poppins normal';
-    font-size: 18px;
-  }
+.plan-title {
+  font-family: "Poppins bold";
+  font-size: 24px;
+}
 
-  .graphs{
-    margin-top: 32px;
-    gap: 16px;
-    display: flex;
-  }
+.graphs {
+  margin-top: 32px;
+  gap: 16px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 
-  .graph1,.graph2{
-    background-color: #FFFFFF;
-    border-radius: 8px;
-    padding: 24px;
-  }
+.nutrition-graph,
+.meal-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 24px;
+}
 
+.nutrition-graph {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.stats-container {
+  display: flex;
+  flex-direction: row;
+  gap: 48px;
+}
+
+.stat-label {
+  font-size: 14px;
+  font-family: "Poppins semi-bold";
+}
+
+.stat {
+  width: max-content;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+.indicator {
+  width: 110px;
+  height: 110px;
+  border-radius: 100%;
+  display: grid;
+  place-items: center;
+  position: relative;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  transition: --fill 2s;
+  animation-duration: 1s;
+  animation-timing-function: cubic-bezier(0, 0.01, 0, 1.01);
+}
+
+.indicator::after {
+  display: grid;
+  place-items: center;
+  content: "";
+  height: 80%;
+  width: 80%;
+  position: absolute;
+  font-family: "Poppins bold";
+  font-size: 16px;
+  background-color: white;
+  border-radius: 100%;
+}
+
+@property --fill {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes carbsProgress {
+  from {
+    --fill: 0deg;
+  }
+  to {
+    --fill: 170deg;
+  }
+}
+
+@keyframes proteinsProgress {
+  from {
+    --fill: 0deg;
+  }
+  to {
+    --fill: 108deg;
+  }
+}
+
+@keyframes fatsProgress {
+  from {
+    --fill: 0deg;
+  }
+  to {
+    --fill: 75.6deg;
+  }
+}
+
+.carbs {
+  background: conic-gradient(var(--primary) var(--fill), #e8e8e9 var(--fill));
+  animation-name: carbsProgress;
+}
+
+.carbs::after {
+  content: "49%";
+}
+
+.proteins {
+  background: conic-gradient(var(--secondary) var(--fill), #e8e8e9 var(--fill));
+  animation-name: proteinsProgress;
+}
+
+.proteins::after {
+  content: "30%";
+}
+
+.fats {
+  background: conic-gradient(var(--positive) var(--fill), #e8e8e9 var(--fill));
+  animation-name: fatsProgress;
+}
+
+.fats::after {
+  content: "21%";
+}
+
+.graph-title {
+  font-family: "Poppins bold";
+  font-size: 18px;
+}
+
+.meal-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  min-width: 240px;
+}
+
+.meal-card-when {
+  font-family: "Poppins semi-bold";
+  font-size: 14px;
+  color: #323338;
+}
+
+.meal-card-title {
+  font-family: "Poppins bold";
+  font-size: 18px;
+}
+
+.next-meal-title {
+  color: var(--primary);
+}
+
+.last-meal-title {
+  color: #323338;
+}
+
+.meal-card-header,
+.meal-card-product-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.meal-card-product-name {
+  font-family: "Poppins bold";
+  font-size: 14px;
+  max-width: 24ch;
+  text-align: center;
+}
+
+.meal-card-product-quantity {
+  font-family: "Poppins bold";
+  font-size: 16px;
+  color: var(--positive);
+}
+
+.product-image-container {
+  height: 160px;
+  width: 100%;
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.meal-card-product-image {
+  position: absolute;
+  width: 150px;
+  aspect-ratio: auto;
+  top: 10%;
+}

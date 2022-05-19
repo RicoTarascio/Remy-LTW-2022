@@ -98,7 +98,7 @@ const CalendarCard = ({ pet, nutritionIndex, style, selectedDate }: { pet: Pet, 
                     </div>
                 </div>
                 <div className="image-container">
-                    <div className="product-image"></div>
+                    <img className="calendar-card-product-image" src="http://localhost:4000/images/product.png" />
                 </div>
             </div>
         </div>

@@ -1,6 +1,6 @@
 import Product from "./product";
 
-interface MealCompleted {
+export interface MealCompleted {
   mealID: number;
   when: string;
 }
