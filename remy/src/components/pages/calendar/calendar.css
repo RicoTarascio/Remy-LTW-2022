@@ -121,7 +121,7 @@
 .nutritions-container {
   overflow-y: auto;
   overflow-x: clip;
-  width: calc(100% + 244px);
+  width: calc(100% + 400px);
 }
 
 .nutritions {
