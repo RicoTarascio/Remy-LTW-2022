@@ -5,6 +5,7 @@ import "./pet.css";
 import Pet from "../../../types/pet";
 import Meal, { MealCompleted } from "../../../types/meal";
 import PawLoading from "../../commons/pawLoading/pawLoading";
+import Button from "../../input/button/button";
 
 const PetComponent = () => {
     const navigate = useNavigate();
@@ -79,14 +80,20 @@ const PetComponent = () => {
         <>
             {
                 loading ? <PawLoading /> : <div className="page-container">
-                    <div className="petheader-container">
-                        <div className="back-icon">
-                            <i className="ArrowLeft" onClick={() => navigate("/pets")}></i>
+                    <div className="petheader">
+                        <div className="petheader-container">
+                            <div className="back-icon">
+                                <i className="ArrowLeft" onClick={() => navigate("/pets")}></i>
+                            </div>
+                            <div className="name-container">
+                                <h1 className="title">{pet!.name}</h1>
+                            </div>
                         </div>
-                        <div className="name-container">
-                            <h1 className="title">{pet!.name}</h1>
+                        <div className="btn-container">
+                            <Button buttonType="Secondary" onClickCallback={()=>{}} text="Elimina pet" icon="Delete"></Button>
                         </div>
                     </div>
+                    
                     <div className="info-container">
                         <div className="pet-info">
                             {pet!.species}

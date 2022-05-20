@@ -21,6 +21,13 @@
   padding-right: 8px;
 }
 
+.petheader{
+  display: grid;
+  grid-template-columns: max-content max-content;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .petheader-container {
   display: grid;
   grid-template-columns: min-content min-content;
