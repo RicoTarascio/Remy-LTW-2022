@@ -16,7 +16,7 @@
   height: 100%;
 }
 
-.ArrowRightSquare {
+.card-ArrowRightSquare {
   height: 32px;
   width: 32px;
 }
@@ -79,6 +79,8 @@
   width: 100%;
   border: 2px solid black;
   position: relative;
+  height: fit-content;
+  align-self: center;
 }
 
 .pet-nutrition::before {
@@ -139,6 +141,8 @@
   padding-top: 24px;
   width: 100%;
   height: 100%;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
 }
 
 .nutrition-info {

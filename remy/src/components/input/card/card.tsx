@@ -64,7 +64,7 @@ const Card = ({ pet }: { pet: Pet }) => {
                     </div>
                 </div>
                 <div className="card-arrow-icon">
-                    <i className="card-ArrowRightSquare" />
+                    <i className="card-ArrowRightSquare ArrowRightSquare" />
                 </div>
             </div>
 
