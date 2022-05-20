@@ -3,33 +3,37 @@
   display: grid;
   grid-template-rows: auto 1fr;
   min-height: 100%;
-  padding: 40px 40px 40px 100px;
+  padding: 40px 40px 5% 100px;
   padding-right: 10%;
   align-items: center;
+  overflow-x: hidden;
+}
+
+.top {
+  z-index: 999;
 }
 
 .login-container {
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   height: fit-content;
 }
 
 .inner-form-container {
   min-width: min(100%, 430px);
-  display: grid;
-  grid-template-rows: max-content max-content max-content max-content;
+  display: flex;
+  flex-direction: column;
   gap: 16px;
 }
 
 .login-title {
-  margin-bottom: 32px;
+  margin-bottom: 16px;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
   width: inherit;
 }

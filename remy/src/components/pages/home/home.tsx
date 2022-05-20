@@ -8,7 +8,7 @@ const Home = () => {
     return (
         <div className="home-all-container">
             <div className="home-header">
-                <div className="home-logo-container">Remy</div>
+                <div className="logo-container" />
                 <div className="home-action-buttons-container">
                     <Button buttonType="Secondary" text="Signup" onClickCallback={() => navigate("/register")} />
                     <Button buttonType="Primary" text="Login" onClickCallback={() => navigate("/login")} />

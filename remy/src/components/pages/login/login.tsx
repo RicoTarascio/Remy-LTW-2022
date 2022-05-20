@@ -50,7 +50,7 @@ const Login = (router: NavigationRouter) => {
     return (
         <div className="login-all-container">
             <div className="artwork"></div>
-            <div className="top"><h1>Remy</h1></div>
+            <div className="top"><div className="logo-container" /></div>
             <div className="login-container">
                 <div className="form">
                     <h2 className="login-title">Login</h2>

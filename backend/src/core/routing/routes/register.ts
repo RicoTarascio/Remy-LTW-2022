@@ -11,13 +11,7 @@ const Router = express.Router();
 const Register = Router.get(
   "/register",
   async (req: Request, res: Response) => {
-    if (
-      !req.query ||
-      !req.query.plainPwd ||
-      !req.query.email ||
-      !req.query.name ||
-      !req.query.surname
-    ) {
+    if (!req.query || !req.query.plainPwd || !req.query.email) {
       return res
         .status(400)
         .send(`Need name, surname, email and password to register.`);

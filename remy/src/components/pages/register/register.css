@@ -2,19 +2,21 @@
   position: relative;
   display: grid;
   grid-template-rows: auto 1fr;
-  height: fit-content;
-  padding: 40px 40px 10% 100px;
+  min-height: 100%;
+  padding: 40px 40px 5% 100px;
   padding-right: 10%;
+  overflow-x: hidden;
 }
 .register-container {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
   height: fit-content;
+  margin-top: 40px;
 }
 
 .register-title {
-  margin-bottom: 32px;
+  margin-bottom: 16px;
 }
 
 .error-message-container {
@@ -52,6 +54,8 @@
   background-image: url("../../../images/Signup_Login_bg.svg");
   background-repeat: no-repeat;
   z-index: 4;
+  background-size: contain;
+  transform: translateX(50%);
 }
 
 .register-container .form {

@@ -7,6 +7,15 @@
   padding: 40px 40px 10% 100px;
 }
 
+.logo-container {
+  background-image: url("../../../images/Remy_logo.svg");
+  width: 18vw;
+  aspect-ratio: 2 / 1;
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 999;
+}
+
 .home-container {
   display: grid;
   height: 100%;
@@ -77,4 +86,5 @@
   display: flex;
   flex-direction: row;
   gap: 24px;
+  height: fit-content;
 }

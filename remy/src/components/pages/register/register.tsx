@@ -53,7 +53,7 @@ const Register = (router: NavigationRouter) => {
 
     return (
         <div className="register-all-container">
-            <div className="top"><h1>Remy</h1></div>
+            <div className="top"><div className="logo-container" /></div>
             <div className="register-container">
                 <div className="form">
                     <h2 className="register-title">Signup</h2>
@@ -62,9 +62,9 @@ const Register = (router: NavigationRouter) => {
                             <h3 className="error-message">{errorMessage}</h3>
                         </div>
 
-                        <Textfield valid={!errorMessage} size="big" type="text" changeCallback={(e: any) => { setName(e.target.value); }} placeholder='Mario' label='Nome' required icon='Edit' />
+                        {/* <Textfield valid={!errorMessage} size="big" type="text" changeCallback={(e: any) => { setName(e.target.value); }} placeholder='Mario' label='Nome' required icon='Edit' />
 
-                        <Textfield valid={!errorMessage} size="big" type="text" changeCallback={(e: any) => { setSurname(e.target.value); }} placeholder='Rossi' label='Cognome' required icon='Edit' />
+                        <Textfield valid={!errorMessage} size="big" type="text" changeCallback={(e: any) => { setSurname(e.target.value); }} placeholder='Rossi' label='Cognome' required icon='Edit' /> */}
 
                         <Textfield valid={!errorMessage} size="big" type="email" changeCallback={(e: any) => { setEmail(e.target.value); }} placeholder='esempio@email.com' label='Email' required icon='At' />
 

@@ -29,13 +29,11 @@ const Layout = (props: { location: Location, navigate: NavigationType, user: Use
     return (
         <div className="layout">
             <div className="sidebar">
-                <div className="logo">
-                    <h1 className="logo-inner">Remy</h1>
-                </div>
+                <h1 className="logo-container" />
                 <div className="links-container">
                     <NavLink to="pets" icon="Heart">Pets</NavLink>
                     <NavLink to="calendar" icon="Calendar">Calendario</NavLink>
-                    <NavLink to="user" icon="Profile">{props.user.name}</NavLink>
+                    <NavLink to="user" icon="Profile">{props.user.name ? props.user.name : "Profilo"}</NavLink>
                 </div>
             </div>
             <div className="page" id="page">
