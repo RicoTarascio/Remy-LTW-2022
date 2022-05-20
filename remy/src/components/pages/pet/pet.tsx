@@ -38,7 +38,7 @@ const PetComponent = () => {
 
         const nextMeal = pet.nutritionPlans?.[0]?.meals.find(meal => {
             if (meal.weekDay === today.getDay() && meal.hours > today.getHours()) return meal;
-            else if (meal.hours === today.getHours() && meal.minutes > today.getMinutes()) return meal;
+            else if (meal.weekDay === today.getDay() && meal.hours === today.getHours() && meal.minutes > today.getMinutes()) return meal;
         })
 
         if (!nextMeal) {

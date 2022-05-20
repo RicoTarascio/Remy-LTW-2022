@@ -48,10 +48,10 @@ const Login = (router: NavigationRouter) => {
 
 
     return (
-        <>
+        <div className="login-all-container">
+            <div className="artwork"></div>
+            <div className="top"><h1>Remy</h1></div>
             <div className="login-container">
-                <div className="top"><h1>Remy</h1></div>
-                <div className="artwork"></div>
                 <div className="form">
                     <h2 className="login-title">Login</h2>
                     <form noValidate className="inner-form-container" ref={formRef} onSubmit={async (e) => { e.preventDefault(); await login(email, password) }} >
@@ -77,7 +77,7 @@ const Login = (router: NavigationRouter) => {
                 </div>
                 <div className="bottom"></div>
             </div>
-        </>
+        </div>
     );
 }
 export default Login;

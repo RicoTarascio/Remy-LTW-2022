@@ -1,6 +1,16 @@
+.home-all-container {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  overflow: hidden;
+  height: 100%;
+  padding: 40px 40px 10% 100px;
+}
+
 .home-container {
   display: grid;
   height: 100%;
+  position: relative;
 }
 
 .main {
@@ -8,16 +18,11 @@
   margin: 0;
 }
 
-.top {
-  outline: 1px solid red;
-  height: 100px;
-}
-
 .text-container {
-  padding-left: 100px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  z-index: 2;
 }
 
 .orange {
@@ -32,7 +37,7 @@
 }
 
 .button-container {
-  margin: 50px 50px 50px 0;
+  margin-top: 64px;
   display: grid;
   grid-template-columns: max-content max-content;
   gap: 24px;
@@ -46,4 +51,30 @@
 
 .subtitle {
   margin: 0;
+}
+
+.home-bg {
+  aspect-ratio: 1 / 1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../../images/Home_background.svg");
+  z-index: 1;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  transform: translateX(15%);
+}
+
+.home-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  z-index: 2;
+}
+
+.home-action-buttons-container {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
 }

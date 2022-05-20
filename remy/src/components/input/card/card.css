@@ -1,11 +1,11 @@
-.arrow-icon {
+.card-arrow-icon {
   display: grid;
   place-items: center;
   margin-bottom: 16px;
   margin-top: 16px;
 }
 
-.ArrowRightSquare::before {
+.card-ArrowRightSquare::before {
   background-color: var(--black);
   content: "";
   display: block;

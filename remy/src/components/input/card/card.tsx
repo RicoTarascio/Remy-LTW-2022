@@ -1,6 +1,7 @@
 import "./card.css";
 import Pet from "../../../types/pet";
 import { useNavigate } from "react-router-dom";
+import Meal from "../../../types/meal";
 
 
 const Card = ({ pet }: { pet: Pet }) => {
@@ -14,7 +15,7 @@ const Card = ({ pet }: { pet: Pet }) => {
 
         const nextMeal = pet.nutritionPlans?.[0]?.meals.find(meal => {
             if (meal.weekDay === today.getDay() && meal.hours > today.getHours()) return meal;
-            else if (meal.hours === today.getHours() && meal.minutes > today.getMinutes()) return meal;
+            else if (meal.weekDay === today.getDay() && meal.hours === today.getHours() && meal.minutes > today.getMinutes()) return meal;
         })
 
         if (!nextMeal) {
@@ -34,6 +35,10 @@ const Card = ({ pet }: { pet: Pet }) => {
     }
 
     const nextMeal = getPetNextMeal(pet)
+    const hoursToNextMeal = (nextMeal: Meal) => {
+        const today = new Date();
+        return Math.abs((nextMeal.weekDay === 0 ? 7 : nextMeal.weekDay) - today.getDay()) * 24 + Math.abs(nextMeal.hours - today.getHours());
+    }
 
     return (
         <div className="card-container" onClick={() => { navigate("/pets/" + pet.id) }}>
@@ -54,12 +59,12 @@ const Card = ({ pet }: { pet: Pet }) => {
                 <div className="pet-nutrition">
                     <div className="nutrition-info">
                         <h5 className="n-row1">Devo mangiare fra</h5>
-                        <h3 className="n-row2">{nextMeal!.hours - new Date().getHours()} ore</h3>
+                        <h3 className="n-row2">{hoursToNextMeal(nextMeal!)} ore</h3>
                         <h5 className="n-row3">{nextMeal?.Product.name} - {nextMeal?.quantity}g</h5>
                     </div>
                 </div>
-                <div className="arrow-icon">
-                    <i className="ArrowRightSquare" />
+                <div className="card-arrow-icon">
+                    <i className="card-ArrowRightSquare" />
                 </div>
             </div>
 

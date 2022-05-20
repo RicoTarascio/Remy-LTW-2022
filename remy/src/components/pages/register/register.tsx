@@ -52,39 +52,42 @@ const Register = (router: NavigationRouter) => {
     }
 
     return (
-        <div className="register-container">
+        <div className="register-all-container">
             <div className="top"><h1>Remy</h1></div>
-            <div className="artwork"></div>
-            <div className="form">
-                <h2 className="register-title">Signup</h2>
-                <form ref={formRef} noValidate className="inner-form-container" onSubmit={(e) => { e.preventDefault(); register(name, surname, email, password, passwordRepeat); }}>
-                    <div className="error-message-container">
-                        <h3 className="error-message">{errorMessage}</h3>
-                    </div>
+            <div className="register-container">
+                <div className="form">
+                    <h2 className="register-title">Signup</h2>
+                    <form ref={formRef} noValidate className="inner-form-container" onSubmit={(e) => { e.preventDefault(); register(name, surname, email, password, passwordRepeat); }}>
+                        <div className="error-message-container">
+                            <h3 className="error-message">{errorMessage}</h3>
+                        </div>
 
-                    <Textfield valid={!errorMessage} size="big" type="text" changeCallback={(e: any) => { setName(e.target.value); }} placeholder='Mario' label='Nome' required icon='Edit' />
+                        <Textfield valid={!errorMessage} size="big" type="text" changeCallback={(e: any) => { setName(e.target.value); }} placeholder='Mario' label='Nome' required icon='Edit' />
 
-                    <Textfield valid={!errorMessage} size="big" type="text" changeCallback={(e: any) => { setSurname(e.target.value); }} placeholder='Rossi' label='Cognome' required icon='Edit' />
+                        <Textfield valid={!errorMessage} size="big" type="text" changeCallback={(e: any) => { setSurname(e.target.value); }} placeholder='Rossi' label='Cognome' required icon='Edit' />
 
-                    <Textfield valid={!errorMessage} size="big" type="email" changeCallback={(e: any) => { setEmail(e.target.value); }} placeholder='esempio@email.com' label='Email' required icon='At' />
+                        <Textfield valid={!errorMessage} size="big" type="email" changeCallback={(e: any) => { setEmail(e.target.value); }} placeholder='esempio@email.com' label='Email' required icon='At' />
 
-                    <Textfield valid={!errorMessage} size="big" type="password" changeCallback={(e: any) => { setPassword(e.target.value); }} placeholder='Inserisci la tua password' label='Password' required icon='Show' />
+                        <Textfield valid={!errorMessage} size="big" type="password" changeCallback={(e: any) => { setPassword(e.target.value); }} placeholder='Inserisci la tua password' label='Password' required icon='Show' />
 
-                    <Textfield valid={!errorMessage} size="big" type="password" changeCallback={(e: any) => { setPasswordRepeat(e.target.value); }} placeholder='Conferma la tua password' label='Conferma password' required icon='Show' />
+                        <Textfield valid={!errorMessage} size="big" type="password" changeCallback={(e: any) => { setPasswordRepeat(e.target.value); }} placeholder='Conferma la tua password' label='Conferma password' required icon='Show' />
 
-                    <Checkbox label="Accetto i termini contrattuali" changeCallback={(e: any) => { setCheckbox(e.target.checked); }}></Checkbox>
+                        <Checkbox label="Accetto i termini contrattuali" changeCallback={(e: any) => { setCheckbox(e.target.checked); }}></Checkbox>
 
-                    <div className="button-spinner">
-                        <Button buttonType="Primary" text="Signup" onClickCallback={() => { }}></Button>
-                        {
-                            loading ? <Spinner /> : ""
-                        }
-                    </div>
-                    <h3 className="registrati">Hai già un account? <span className="go-to-login-link" onClick={() => { router.navigate("/login"); }}>Accedi</span></h3>
-                </form>
+                        <div className="button-spinner">
+                            <Button buttonType="Primary" text="Signup" onClickCallback={() => { }}></Button>
+                            {
+                                loading ? <Spinner /> : ""
+                            }
+                        </div>
+                        <h3 className="registrati">Hai già un account? <span className="go-to-login-link" onClick={() => { router.navigate("/login"); }}>Accedi</span></h3>
+                    </form>
+                </div>
+                <div className="bottom"></div>
             </div>
-            <div className="bottom"></div>
+            <div className="artwork" />
         </div>
+
     );
 
 }
