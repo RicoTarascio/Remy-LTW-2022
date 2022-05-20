@@ -5,13 +5,14 @@
   box-shadow: 5px 4px 0px #000000;
   border-radius: 8px;
   position: absolute;
+  height: fit-content;
 }
 
 .content-container {
   display: grid;
   grid-template-columns: auto auto;
-  place-items: center;
   gap: 16px;
+  height: fit-content;
 }
 
 .calendar-card-text-container {
@@ -19,10 +20,12 @@
   grid-template-rows: auto auto auto;
   gap: 8px;
   width: max-content;
+  height: fit-content;
 }
 
 .done-container {
-  margin-top: 40px;
+  margin-top: 24px;
+  height: fit-content;
 }
 
 .calendar-card-pet-name {
@@ -80,6 +83,11 @@
   height: 24px;
 }
 
+.calendar-card-image-container {
+  display: grid;
+  place-items: center;
+}
+
 .calendar-card-product-image {
-  width: 150px;
+  width: 120px;
 }
