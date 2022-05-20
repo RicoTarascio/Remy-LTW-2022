@@ -46,7 +46,7 @@ const PetComponent = () => {
             let differentDayMeal;
             let minDayFound = 6;
             pet.nutritionPlans?.[0]?.meals.forEach(meal => {
-                if (meal.weekDay > today.getDay() && meal.weekDay < minDayFound) {
+                if (meal.weekDay > today.getDay() && meal.weekDay <= minDayFound) {
                     differentDayMeal = meal
                     minDayFound = meal.weekDay
                 }
@@ -90,10 +90,10 @@ const PetComponent = () => {
                             </div>
                         </div>
                         <div className="btn-container">
-                            <Button buttonType="Secondary" onClickCallback={()=>{}} text="Elimina pet" icon="Delete"></Button>
+                            <Button buttonType="Secondary" onClickCallback={() => { }} text="Elimina pet" icon="Delete"></Button>
                         </div>
                     </div>
-                    
+
                     <div className="info-container">
                         <div className="pet-info">
                             {pet!.species}

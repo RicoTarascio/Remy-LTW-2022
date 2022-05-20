@@ -22,7 +22,7 @@ const Card = ({ pet }: { pet: Pet }) => {
             let differentDayMeal;
             let minDayFound = 6;
             pet.nutritionPlans?.[0]?.meals.forEach(meal => {
-                if (meal.weekDay > today.getDay() && meal.weekDay < minDayFound) {
+                if (meal.weekDay > today.getDay() && meal.weekDay <= minDayFound) {
                     differentDayMeal = meal
                     minDayFound = meal.weekDay
                 }
