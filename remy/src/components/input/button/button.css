@@ -89,3 +89,19 @@
 .button-icon::before {
   background-color: white;
 }
+
+.Dangerous {
+  outline-color: var(--negative);
+}
+
+.Dangerous:hover {
+  background-color: #e8cdcd;
+}
+
+.Dangerous .button-text {
+  color: var(--negative);
+}
+
+.Dangerous .button-icon::before {
+  background-color: var(--negative);
+}

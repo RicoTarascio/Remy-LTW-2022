@@ -7,12 +7,13 @@ interface ButtonParams {
     buttonType: ButtonType,
     onClickCallback: Function,
     text: string,
-    icon?: Icon
+    icon?: Icon,
+    typeOfAction?: "Dangerous"
 }
 
 const Button = (params: ButtonParams) => {
     return (
-        <button className={params.buttonType} onClick={() => params.onClickCallback()}>
+        <button className={params.buttonType + " " + params.typeOfAction} onClick={() => params.onClickCallback()}>
             <div className="button-inner">
                 <h3 className="ui-text button-text">{params.text}</h3>
                 {

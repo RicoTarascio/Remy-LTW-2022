@@ -27,7 +27,7 @@ const createMeals = async (nutritionPlanID: number) => {
   for (let i = 0; i < 7; i++) {
     const meal = {
       nutritionPlanID: nutritionPlanID,
-      hours: randomBetween(8, 22),
+      hours: randomBetween(8, 21),
       minutes: randomBetween(0, 45),
       quantity: randomBetween(30, 200),
       weekDay: i,

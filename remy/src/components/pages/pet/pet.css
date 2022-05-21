@@ -1,5 +1,5 @@
 .page-container {
-  padding: 80px 16px 16px 24px;
+  padding: 80px 16px 32px 24px;
 }
 
 .ArrowLeft::before {
@@ -21,7 +21,7 @@
   padding-right: 8px;
 }
 
-.petheader{
+.petheader {
   display: grid;
   grid-template-columns: max-content max-content;
   justify-content: space-between;
@@ -56,6 +56,9 @@
 
 .plan-container {
   margin-top: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
 
 .plan-title {
@@ -64,7 +67,6 @@
 }
 
 .graphs {
-  margin-top: 32px;
   gap: 16px;
   display: flex;
   flex-direction: row;
@@ -261,4 +263,10 @@
   width: 150px;
   aspect-ratio: auto;
   top: 10%;
+}
+
+.btn-container {
+  height: 100%;
+  display: grid;
+  align-content: flex-end;
 }

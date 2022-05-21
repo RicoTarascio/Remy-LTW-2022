@@ -4,6 +4,9 @@ import dotenv from "dotenv";
 import Router from "./core/routing/router";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
+import prismaClient from "./core/db/prismaClient";
+import { Sql } from "@prisma/client/runtime";
+import { products } from "./mock/mockProducts";
 
 dotenv.config();
 const app = express();

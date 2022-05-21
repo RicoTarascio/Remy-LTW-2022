@@ -46,7 +46,12 @@ const PetComponent = () => {
             let differentDayMeal;
             let minDayFound = 6;
             pet.nutritionPlans?.[0]?.meals.forEach(meal => {
-                if (meal.weekDay > today.getDay() && meal.weekDay <= minDayFound) {
+
+                if (today.getDay() === 6 && meal.weekDay <= minDayFound) {
+                    differentDayMeal = meal
+                    minDayFound = meal.weekDay
+                }
+                else if (meal.weekDay > today.getDay() && meal.weekDay <= minDayFound) {
                     differentDayMeal = meal
                     minDayFound = meal.weekDay
                 }
@@ -76,6 +81,18 @@ const PetComponent = () => {
         return -1;
     }
 
+    const deletePet = () => {
+        setLoading(true)
+        axios.get("http://localhost:4000/deletePet", {
+            withCredentials: true,
+            params: {
+                petID: pet?.id
+            }
+        }).then(() => {
+            navigate("/pets")
+        })
+    }
+
     return (
         <>
             {
@@ -89,9 +106,7 @@ const PetComponent = () => {
                                 <h1 className="title">{pet!.name}</h1>
                             </div>
                         </div>
-                        <div className="btn-container">
-                            <Button buttonType="Secondary" onClickCallback={() => { }} text="Elimina pet" icon="Delete"></Button>
-                        </div>
+
                     </div>
 
                     <div className="info-container">
@@ -152,22 +167,26 @@ const PetComponent = () => {
                             }
 
 
-                            <div className="meal-card last-meal">
-                                <div className="meal-card-header">
-                                    <h4 className="meal-card-when last-meal-when">{new Date(lastMeal!.completedDates[0].when).getDate()} / {new Date(lastMeal!.completedDates[0].when).getMonth()} / {new Date(lastMeal!.completedDates[0].when).getFullYear()}</h4>
-                                    <h3 className="meal-card-title last-meal-title">Ultimo pasto</h3>
-                                </div>
-
-                                <div className="meal-card-product-info">
-                                    <h3 className="meal-card-product-name">{lastMeal?.Product.name}</h3>
-                                    <h3 className="meal-card-product-quantity">{lastMeal?.quantity}g</h3>
-                                    <div className="product-image-container">
-                                        <img className="meal-card-product-image" src="http://localhost:4000/images/product.png" />
+                            {
+                                lastMeal ? <div className="meal-card last-meal">
+                                    <div className="meal-card-header">
+                                        <h4 className="meal-card-when last-meal-when">{new Date(lastMeal!.completedDates[0].when).getDate()} / {new Date(lastMeal!.completedDates[0].when).getMonth()} / {new Date(lastMeal!.completedDates[0].when).getFullYear()}</h4>
+                                        <h3 className="meal-card-title last-meal-title">Ultimo pasto</h3>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
 
+                                    <div className="meal-card-product-info">
+                                        <h3 className="meal-card-product-name">{lastMeal?.Product.name}</h3>
+                                        <h3 className="meal-card-product-quantity">{lastMeal?.quantity}g</h3>
+                                        <div className="product-image-container">
+                                            <img className="meal-card-product-image" src="http://localhost:4000/images/product.png" />
+                                        </div>
+                                    </div>
+                                </div> : null
+                            }
+                        </div>
+                        <div className="btn-container">
+                            <Button buttonType="Secondary" typeOfAction="Dangerous" onClickCallback={() => { deletePet() }} text="Elimina pet" icon="Delete"></Button>
+                        </div>
                     </div>
                 </div>
             }

@@ -2,6 +2,7 @@ import express from "express";
 import AddMealCompleted from "./routes/addMealCompleted";
 import AddPet from "./routes/addPet";
 import Auth from "./routes/auth";
+import DeletePet from "./routes/deletePet";
 import GetPet from "./routes/getPet";
 import GetPets from "./routes/getPets";
 import GetUser from "./routes/getUser";
@@ -23,6 +24,7 @@ Router.use(GetPets);
 Router.use(AddMealCompleted);
 Router.use(GetUser);
 Router.use(UpdateUser);
+Router.use(DeletePet);
 
 Router.use(GetPet);
 
