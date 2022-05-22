@@ -9,8 +9,6 @@ import Textfield from "../../input/textfield/textfield";
 import "./register.css";
 
 const Register = (router: NavigationRouter) => {
-    const [name, setName] = useState("");
-    const [surname, setSurname] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [passwordRepeat, setPasswordRepeat] = useState("");
@@ -19,7 +17,7 @@ const Register = (router: NavigationRouter) => {
     const formRef: React.MutableRefObject<HTMLFormElement | null> = useRef(null);
     const [errorMessage, setErrorMessage] = useState("");
 
-    const register = (name: string, surname: string, email: string, password: string, passwordRepeat: string) => {
+    const register = (email: string, password: string, passwordRepeat: string) => {
         const formValidationErrors = isFormValid(formRef);
         const passwordValidationErrors = passwordValidation(password, passwordRepeat)
         if (formValidationErrors || loading) {
@@ -33,8 +31,8 @@ const Register = (router: NavigationRouter) => {
             setLoading(true);
             axios.get("http://localhost:4000/register", {
                 params: {
-                    name: name,
-                    surname: surname,
+                    name: "",
+                    surname: "",
                     email: email,
                     plainPwd: password
                 },
@@ -57,7 +55,7 @@ const Register = (router: NavigationRouter) => {
             <div className="register-container">
                 <div className="form">
                     <h2 className="register-title">Signup</h2>
-                    <form ref={formRef} noValidate className="inner-form-container" onSubmit={(e) => { e.preventDefault(); register(name, surname, email, password, passwordRepeat); }}>
+                    <form ref={formRef} noValidate className="inner-form-container" onSubmit={(e) => { e.preventDefault(); register(email, password, passwordRepeat); }}>
                         <div className="error-message-container">
                             <h3 className="error-message">{errorMessage}</h3>
                         </div>
