@@ -1,9 +1,0 @@
-import express, { Request, Response } from "express";
-
-const Router = express.Router();
-
-const Hello = Router.get("/hello", async (req: Request, res: Response) => {
-  res.status(200).send("Hello!");
-});
-
-export default Hello;

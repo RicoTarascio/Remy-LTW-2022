@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import UserController from "../../../core/controllers/userController";
+import UserController from "../../../controllers/userController";
 import { User } from "../../../types/user";
 import PawLoading from "../../commons/pawLoading/pawLoading";
 import Button from "../../input/button/button";

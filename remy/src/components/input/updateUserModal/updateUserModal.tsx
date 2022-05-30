@@ -2,7 +2,7 @@ import axios, { AxiosError } from "axios";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router";
 import isFormValid from "../../../controllers/isFormValid";
-import UserController from "../../../core/controllers/userController";
+import UserController from "../../../controllers/userController";
 import { User } from "../../../types/user";
 import Spinner from "../../commons/spinner/spinner";
 import Button from "../button/button";

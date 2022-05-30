@@ -13,10 +13,6 @@ export type NavigationRouter = {
     location: LocationProps, navigate: NavigateFunction
 }
 
-type ComponentWithRouter = {
-    router: NavigationRouter
-}
-
 const requireNotAuth = (Component: any) => {
     const ElemToRender = () => {
         const [user, loading] = useUser();

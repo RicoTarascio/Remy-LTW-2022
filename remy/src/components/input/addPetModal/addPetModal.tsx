@@ -17,7 +17,6 @@ const AddPetModal = ({ open, handleClose }: { open: boolean, handleClose: Functi
 
     const addPet = () => {
         const formValidationError = isFormValid(formRef);
-        console.log((formRef.current![0] as ObjectWithValue).value)
         if (formValidationError || loading) {
             setErrorMessage(formValidationError);
             return;
@@ -33,6 +32,7 @@ const AddPetModal = ({ open, handleClose }: { open: boolean, handleClose: Functi
             }, {
                 withCredentials: true
             }).then(() => {
+                setLoading(false)
                 handleClose();
             })
         } catch (err: any) {

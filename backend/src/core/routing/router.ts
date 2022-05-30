@@ -6,7 +6,6 @@ import DeletePet from "./routes/deletePet";
 import GetPet from "./routes/getPet";
 import GetPets from "./routes/getPets";
 import GetUser from "./routes/getUser";
-import Hello from "./routes/hello";
 import Login from "./routes/login";
 import Logout from "./routes/logout";
 import Register from "./routes/register";
@@ -14,7 +13,6 @@ import UpdateUser from "./routes/updateUser";
 
 const Router = express.Router();
 
-Router.use(Hello);
 Router.use(Login);
 Router.use(Register);
 Router.use(Logout);

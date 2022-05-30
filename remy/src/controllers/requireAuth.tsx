@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import Spinner from "../components/commons/spinner/spinner";
-import UserController from "../core/controllers/userController";
+import UserController from "./userController";
 import useUser from "../hooks/useUser";
 import { LocationProps } from "./requireNotAuth";
 
